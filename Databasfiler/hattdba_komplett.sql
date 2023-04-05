@@ -4,16 +4,9 @@
 -- ------------------------------------------------------
 -- Server version	8.0.15
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+
  SET NAMES utf8mb4 ;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 
 --
 --  Create database
@@ -29,446 +22,165 @@ GRANT ALL PRIVILEGES ON hattdba.* TO hattdba@localhost;
 /*This code is to enable a connection to the database hattdba*/
 
 --
--- Table structure for table `Anställd`
+-- Table structure for table `Employee`
 --
 
-DROP TABLE IF EXISTS `Anställd`;
+DROP TABLE IF EXISTS `Employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Anställd` (
-  `AnställningsID` int(50) NOT NULL AUTO_INCREMENT,
-  `Namn` varchar(20) NOT NULL,
-  `Epost` varchar(30) DEFAULT NULL,
-  `Losenord` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`AnställningsID`),
+CREATE TABLE `Employee` (
+  `EmployeeID` varchar(50) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `Mail` varchar(30) DEFAULT NULL,
+  `Password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`EmployeeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Anställd`
+-- Dumping data for table `Employee`
 --
 
-LOCK TABLES `Anställd` WRITE;
-/*!40000 ALTER TABLE `Anställd` DISABLE KEYS */;
-INSERT INTO `Anställd` VALUES (1,'Otto','otto@hatt.com','ottoHatt');
-/*!40000 ALTER TABLE `Anställd` ENABLE KEYS */;
+LOCK TABLES `Employee` WRITE;
+/*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
+INSERT INTO `Employee` VALUES (1,'Otto','otto@hatt.com','ottoHatt');
+/*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Table structure for table `Kund`
 --
 
-DROP TABLE IF EXISTS `Kund`;
+DROP TABLE IF EXISTS `Customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Kund` (
-  `KundID` int(11) NOT NULL,
-  `Registreringsdatum` date DEFAULT NULL,
-  `Losenord` varchar(6) DEFAULT NULL,
-  `Namn` varchar(20) DEFAULT NULL,
-  `Telefon` varchar(30) DEFAULT NULL,
-  `Adress` int(11) NOT NULL,
-  `Ansvarig_Agent` int(11) NOT NULL,
-  PRIMARY KEY (`KundID`),
-  KEY `Ansvar_Agent` (`Ansvarig_Agent`),
-  KEY `Plats` (`Plats`),
-  CONSTRAINT `Alien_ibfk_1` FOREIGN KEY (`Ansvarig_Agent`) REFERENCES `Agent` (`Agent_ID`),
-  CONSTRAINT `Alien_ibfk_2` FOREIGN KEY (`Plats`) REFERENCES `Plats` (`Plats_ID`)
+CREATE TABLE `Customer` (
+  `CustomerID` Varchar(11) NOT NULL,
+  `Name` varchar(20) DEFAULT NULL,
+  `Phone` varchar(30) DEFAULT NULL,
+  `Address` varchar(20) NOT NULL,
+  `Mail` varchar(20) NOT NULL,
+  'Head_measurement'int(6) NOT NULL,
+  PRIMARY KEY (`CustomerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ALIEN`
+-- Dumping data for table `Customer`
 --
 
-LOCK TABLES `Alien` WRITE;
-/*!40000 ALTER TABLE `Alien` DISABLE KEYS */;
-INSERT INTO `Alien` VALUES (1,'2009-12-17','blomma','Bobbo','555-55678',1,1),(2,'2019-12-18','gulbil','My Book','',2,1),(3,'2017-11-18','123','Braxen','555-5544',2,4);
-/*!40000 ALTER TABLE `Alien` ENABLE KEYS */;
+LOCK TABLES `Customer` WRITE;
+/*!40000 ALTER TABLE `Customer` DISABLE KEYS */;
+INSERT INTO `Customer` VALUES ('C1','Ulla','070-1111','skostigen 2','ulla@gmail.com',50);
+/*!40000 ALTER TABLE `Customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Boglodite`
+-- Table structure for table `Order`
 --
 
-DROP TABLE IF EXISTS `Boglodite`;
+DROP TABLE IF EXISTS `Order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Boglodite` (
-  `Alien_ID` int(11) NOT NULL,
-  `Antal_Boogies` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Alien_ID`)
+CREATE TABLE `Order` (
+  `OrderID` varchar(11) NOT NULL,
+  `Datum` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`OrderID`),
+  FOREIGN KEY ('EmployeeID') REFERENCES 'Employee' ('EmployeeID'),
+  FOREIGN KEY ('CustomerID') REFERENCES 'Customer' ('CustomerID'),
+  FOREIGN KEY ('ProductionID') REFERENCES 'Production' ('ProductionID'),
+  FOREIGN KEY ('ArticleID') REFERENCES 'Article' ('ArticleID')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Boglodite`
+-- Dumping data for table `Order`
 --
 
-LOCK TABLES `Boglodite` WRITE;
-/*!40000 ALTER TABLE `Boglodite` DISABLE KEYS */;
-INSERT INTO `Boglodite` VALUES (1,3);
-/*!40000 ALTER TABLE `Boglodite` ENABLE KEYS */;
+LOCK TABLES `Order` WRITE;
+/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
+INSERT INTO `Order` VALUES ('O1', '23-08-22', 'E1', 'C1', 'P1', 'A1');
+/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
+INSERT INTO `Order` VALUES ('O2','23-08-21', 'E2', 'C2', 'P2', 'A2');
+/*!40000 ALTER TABLE `Order` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `Faltagent`
+
+-- Table structure for table `Production`
 --
 
-DROP TABLE IF EXISTS `Faltagent`;
+DROP TABLE IF EXISTS `Production`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Faltagent` (
-  `Agent_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Agent_ID`),
-  CONSTRAINT `Faltagent_Agent_Agent_ID_fk` FOREIGN KEY (`Agent_ID`) REFERENCES `Agent` (`Agent_ID`)
+CREATE TABLE `Production` (
+  `ProductionID` varchar(20) NOT NULL,
+  'Status' varchar(10) NOT NULL,
+  PRIMARY KEY (`ProductionID`),
+  FOREIGN KEY ('ArticleID') REFERENCES 'Article'(ArticleID),
+  FOREIGN KEY ('EmployeeID') REFERENCES 'Employee' (EmployeeID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Faltagent`
+-- Dumping data for table `Production`
 --
 
-LOCK TABLES `Faltagent` WRITE;
-/*!40000 ALTER TABLE `Faltagent` DISABLE KEYS */;
-INSERT INTO `Faltagent` VALUES (1),(2),(3);
-/*!40000 ALTER TABLE `Faltagent` ENABLE KEYS */;
+LOCK TABLES `Production` WRITE;
+/*!40000 ALTER TABLE `Production` DISABLE KEYS */;
+INSERT INTO `Production` VALUES ('P1', 'Lagd', 'A1', 'E1');
+/*!40000 ALTER TABLE `Production` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Fordon`
+-- Table structure for table `Article`
 --
 
-DROP TABLE IF EXISTS `Fordon`;
+DROP TABLE IF EXISTS `Article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Fordon` (
-  `Fordons_ID` varchar(6) NOT NULL,
-  `Fordonsbeskrivning` varchar(100) DEFAULT NULL,
-  `Registreringsdatum` date NOT NULL,
-  `Arsmodell` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Fordons_ID`)
+CREATE TABLE `Article` (
+  `ArticleID` varchar(6) NOT NULL,
+  'Article_Name' varchar(40) NOT NULL,
+  `Price` int(10) NOT NULL,
+  `Material_Spec` varchar(400) NOT NULL,
+  PRIMARY KEY (`ArticleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Fordon`
+-- Dumping data for table `Article`
 --
 
-LOCK TABLES `Fordon` WRITE;
-/*!40000 ALTER TABLE `Fordon` DISABLE KEYS */;
-INSERT INTO `Fordon` VALUES ('33','Ford Galaxie','1965-06-05',1964),('ABC123','Ford LTD Crown Victoria','1993-04-12',1987),('ER55','Monocykle','2012-03-22',2012);
-/*!40000 ALTER TABLE `Fordon` ENABLE KEYS */;
+LOCK TABLES `Article` WRITE;
+/*!40000 ALTER TABLE `Article` DISABLE KEYS */;
+INSERT INTO `Article` VALUES ('A1', 'Blå cowboyhatt', 500, '2 två meter blått tyg, blått snöre, läder');
+/*!40000 ALTER TABLE `Article` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Innehar_Fordon`
+-- Table structure for table `Order_Contains_Of_Article`
 --
 
-DROP TABLE IF EXISTS `Innehar_Fordon`;
+DROP TABLE IF EXISTS `Order_Contains_Of_Article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Innehar_Fordon` (
-  `Agent_ID` int(11) NOT NULL,
-  `Fordons_ID` varchar(6) NOT NULL,
-  `Utkvitteringsdatum` date NOT NULL,
-  PRIMARY KEY (`Agent_ID`,`Fordons_ID`),
-  KEY `Fordons_ID` (`Fordons_ID`),
-  CONSTRAINT `Innehar_Fordon_ibfk_1` FOREIGN KEY (`Fordons_ID`) REFERENCES `Fordon` (`Fordons_ID`),
-  CONSTRAINT `Innehar_Fordon_ibfk_2` FOREIGN KEY (`Agent_ID`) REFERENCES `Agent` (`Agent_ID`)
+CREATE TABLE `Order_Contains_Of_Article` (
+  `OrderID` varchar(10) NOT NULL,
+  `ArticleID` varchar(6) NOT NULL,
+  PRIMARY KEY (`OrderID`,`ArticleID`),
+  /*KEY `ArticleID` (`ArticleID`),*/
+  FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`),
+  FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Innehar_Fordon`
+-- Dumping data for table `Order_Contains_Of_Article`
 --
 
-LOCK TABLES `Innehar_Fordon` WRITE;
-/*!40000 ALTER TABLE `Innehar_Fordon` DISABLE KEYS */;
-INSERT INTO `Innehar_Fordon` VALUES (1,'ABC123','2017-12-24'),(2,'33','2017-12-24'),(2,'ER55','2019-12-18');
-/*!40000 ALTER TABLE `Innehar_Fordon` ENABLE KEYS */;
+LOCK TABLES `Order_Contains_Of_Article` WRITE;
+/*!40000 ALTER TABLE `Order_Contains_Of_Article` DISABLE KEYS */;
+INSERT INTO `Order_Contains_Of_Article` VALUES ('O1', 'A1');
+/*!40000 ALTER TABLE `Order_Contains_Of_Article` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `Innehar_Utrustning`
---
-
-DROP TABLE IF EXISTS `Innehar_Utrustning`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Innehar_Utrustning` (
-  `Agent_ID` int(11) NOT NULL,
-  `Utrustnings_ID` int(11) NOT NULL,
-  `Utkvitteringsdatum` date NOT NULL,
-  PRIMARY KEY (`Agent_ID`,`Utrustnings_ID`),
-  KEY `Utrustnings_ID` (`Utrustnings_ID`),
-  CONSTRAINT `Innehar_Utrustning_ibfk_1` FOREIGN KEY (`Utrustnings_ID`) REFERENCES `Utrustning` (`Utrustnings_ID`),
-  CONSTRAINT `Innehar_Utrustning_ibfk_2` FOREIGN KEY (`Agent_ID`) REFERENCES `Agent` (`Agent_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Innehar_Utrustning`
---
-
-LOCK TABLES `Innehar_Utrustning` WRITE;
-/*!40000 ALTER TABLE `Innehar_Utrustning` DISABLE KEYS */;
-INSERT INTO `Innehar_Utrustning` VALUES (1,2,'2019-12-18'),(1,4,'2019-12-18'),(2,1,'2019-11-18'),(3,3,'2019-11-18');
-/*!40000 ALTER TABLE `Innehar_Utrustning` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Kommunikation`
---
-
-DROP TABLE IF EXISTS `Kommunikation`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Kommunikation` (
-  `Utrustnings_ID` int(11) NOT NULL,
-  `Overforingsteknik` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Utrustnings_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Kommunikation`
---
-
-LOCK TABLES `Kommunikation` WRITE;
-/*!40000 ALTER TABLE `Kommunikation` DISABLE KEYS */;
-INSERT INTO `Kommunikation` VALUES (4,'7G');
-/*!40000 ALTER TABLE `Kommunikation` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Kontorschef`
---
-
-DROP TABLE IF EXISTS `Kontorschef`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Kontorschef` (
-  `Agent_ID` int(11) NOT NULL,
-  `Kontorsbeteckning` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`Agent_ID`),
-  CONSTRAINT `Kontorschef_Agent_Agent_ID_fk` FOREIGN KEY (`Agent_ID`) REFERENCES `agent` (`Agent_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Kontorschef`
---
-
-LOCK TABLES `Kontorschef` WRITE;
-/*!40000 ALTER TABLE `Kontorschef` DISABLE KEYS */;
-INSERT INTO `Kontorschef` VALUES (4,'Örebrokontoret');
-/*!40000 ALTER TABLE `Kontorschef` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Omrade`
---
-
-DROP TABLE IF EXISTS `Omrade`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Omrade` (
-  `Omrades_ID` int(11) NOT NULL,
-  `Benamning` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Omrades_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `OMRADE`
---
-
-LOCK TABLES `Omrade` WRITE;
-/*!40000 ALTER TABLE `Omrade` DISABLE KEYS */;
-INSERT INTO `Omrade` VALUES (1,'Svealand'),(2,'Götaland'),(4,'Norrland');
-/*!40000 ALTER TABLE `Omrade` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Omradeschef`
---
-
-DROP TABLE IF EXISTS `Omradeschef`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Omradeschef` (
-  `Agent_ID` int(11) NOT NULL,
-  `Omrade` int(11) NOT NULL,
-  PRIMARY KEY (`Agent_ID`),
-  KEY `Omradeschef_Omrade_Omrades_ID_fk` (`OMRADE`),
-  CONSTRAINT `Omradeschef_Agent_Agent_ID_fk` FOREIGN KEY (`Agent_ID`) REFERENCES `agent` (`Agent_ID`),
-  CONSTRAINT `Omradeschef_Omrade_Omrades_ID_fk` FOREIGN KEY (`Omrade`) REFERENCES `Omrade` (`Omrades_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Omradeschef`
---
-
-LOCK TABLES `Omradeschef` WRITE;
-/*!40000 ALTER TABLE `Omradeschef` DISABLE KEYS */;
-INSERT INTO `Omradeschef` VALUES (1,1),(2,2),(3,4);
-/*!40000 ALTER TABLE `Omradeschef` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Plats`
---
-
-DROP TABLE IF EXISTS `Plats`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Plats` (
-  `Plats_ID` int(11) NOT NULL,
-  `Finns_I` int(11) NOT NULL,
-  `Benamning` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Plats_ID`),
-  KEY `FINNS_I` (`FINNS_I`),
-  CONSTRAINT `plats_ibfk_1` FOREIGN KEY (`Finns_i`) REFERENCES `Omrade` (`Omrades_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `PLATS`
---
-
-LOCK TABLES `Plats` WRITE;
-/*!40000 ALTER TABLE `PLATS` DISABLE KEYS */;
-INSERT INTO `Plats` VALUES (1,1,'Örebro'),(2,1,'Västerås'),(3,4,'Vilhelmina'),(4,2,'Borås');
-/*!40000 ALTER TABLE `Plats` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Squid`
---
-
-DROP TABLE IF EXISTS `Squid`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Squid` (
-  `Alien_ID` int(11) NOT NULL,
-  `Antal_Armar` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Alien_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Squid`
---
-
-LOCK TABLES `Squid` WRITE;
-/*!40000 ALTER TABLE `Squid` DISABLE KEYS */;
-INSERT INTO `Squid` VALUES (2,6);
-/*!40000 ALTER TABLE `Squid` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Teknik`
---
-
-DROP TABLE IF EXISTS `Teknik`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Teknik` (
-  `Utrustnings_ID` int(11) NOT NULL,
-  `Kraftkalla` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Utrustnings_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Teknik`
---
-
-LOCK TABLES `Teknik` WRITE;
-/*!40000 ALTER TABLE `Teknik` DISABLE KEYS */;
-INSERT INTO `Teknik` VALUES (3,'Uran');
-/*!40000 ALTER TABLE `Teknik` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Utrustning`
---
-
-DROP TABLE IF EXISTS `Utrustning`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Utrustning` (
-  `Utrustnings_ID` int(11) NOT NULL,
-  `Benamning` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Utrustnings_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Utrustning`
---
-
-LOCK TABLES `Utrustning` WRITE;
-/*!40000 ALTER TABLE `Utrustning` DISABLE KEYS */;
-INSERT INTO `Utrustning` VALUES (1,'Noisy Cricket'),(2,'Carbonizer'),(3,'Neuralyzer'),(4,'Communicater');
-/*!40000 ALTER TABLE `Utrustning` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Vapen`
---
-
-DROP TABLE IF EXISTS `Vapen`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Vapen` (
-  `Utrustnings_ID` int(11) NOT NULL,
-  `Kaliber` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Utrustnings_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Vapen`
---
-
-LOCK TABLES `Vapen` WRITE;
-/*!40000 ALTER TABLE `Vapen` DISABLE KEYS */;
-INSERT INTO `Vapen` VALUES (1,200),(2,4);
-/*!40000 ALTER TABLE `Vapen` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Worm`
---
-
-DROP TABLE IF EXISTS `Worm`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Worm` (
-  `Alien_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Alien_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Worm`
---
-
-LOCK TABLES `Worm` WRITE;
-/*!40000 ALTER TABLE `Worm` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Worm` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-01-09 21:48:13
