@@ -70,7 +70,7 @@ CREATE TABLE `Kund` (
   `Adress` int(11) NOT NULL,
   `Ansvarig_Agent` int(11) NOT NULL,
   PRIMARY KEY (`KundID`),
-  KEY `Ansvarig_Agent` (`Ansvarig_Agent`),
+  KEY `Ansvar_Agent` (`Ansvarig_Agent`),
   KEY `Plats` (`Plats`),
   CONSTRAINT `Alien_ibfk_1` FOREIGN KEY (`Ansvarig_Agent`) REFERENCES `Agent` (`Agent_ID`),
   CONSTRAINT `Alien_ibfk_2` FOREIGN KEY (`Plats`) REFERENCES `Plats` (`Plats_ID`)
