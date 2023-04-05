@@ -18,63 +18,58 @@
 --
 --  Create database
 --
-CREATE DATABASE mibdb CHARACTER SET utf8mb4 COLLATE utf8mb4_sv_0900_ai_ci;
-USE mibdb;
+CREATE DATABASE hattdba CHARACTER SET utf8mb4 COLLATE utf8mb4_sv_0900_ai_ci;
+USE hattdba;
 /*This code is to create the database to enable the creation of a user for connecting to the database and the creation of the tables and example data*/
 --
 -- Create user for connecting to the database
 --
-CREATE USER mibdba@localhost IDENTIFIED BY 'mibkey';
-GRANT ALL PRIVILEGES ON mibdb.* TO mibdba@localhost;
-/*This code is to enable a connection to the database mibdb*/
+CREATE USER hattdba@localhost IDENTIFIED BY 'hattkey';
+GRANT ALL PRIVILEGES ON hattdba.* TO hattdba@localhost;
+/*This code is to enable a connection to the database hattdba*/
 
 --
--- Table structure for table `Agent`
+-- Table structure for table `Anställd`
 --
 
-DROP TABLE IF EXISTS `Agent`;
+DROP TABLE IF EXISTS `Anställd`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Agent` (
-  `Agent_ID` int(11) NOT NULL,
+CREATE TABLE `Anställd` (
+  `AnställningsID` int(50) NOT NULL AUTO_INCREMENT,
   `Namn` varchar(20) NOT NULL,
-  `Telefon` varchar(30) DEFAULT NULL,
-  `Anstallningsdatum` date NOT NULL,
-  `Administrator` char(1) DEFAULT NULL,
-  `Losenord` varchar(6) DEFAULT NULL,
-  `Omrade` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Agent_ID`),
-  KEY `Omrade` (`Omrade`),
-  CONSTRAINT `Agent_ibfk_1` FOREIGN KEY (`Omrade`) REFERENCES `Omrade` (`Omrades_ID`)
+  `Epost` varchar(30) DEFAULT NULL,
+  `Losenord` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`AnställningsID`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Agent`
+-- Dumping data for table `Anställd`
 --
 
-LOCK TABLES `Agent` WRITE;
-/*!40000 ALTER TABLE `Agent` DISABLE KEYS */;
-INSERT INTO `Agent` VALUES (1,'Agent O','555-223233','2015-12-18','J','planka',1),(2,'Agent K','555-7765','2015-04-17','N','gtYtyU',4),(3,'Agent J','555-55444','2059-12-19','N','solros',2),(4,'Agent Z','555-5654','2015-01-12','J','jaja',1);
-/*!40000 ALTER TABLE `Agent` ENABLE KEYS */;
+LOCK TABLES `Anställd` WRITE;
+/*!40000 ALTER TABLE `Anställd` DISABLE KEYS */;
+INSERT INTO `Anställd` VALUES (1,'Otto','otto@hatt.com','ottoHatt');
+/*!40000 ALTER TABLE `Anställd` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Alien`
+-- Table structure for table `Kund`
 --
 
-DROP TABLE IF EXISTS `Alien`;
+DROP TABLE IF EXISTS `Kund`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `Alien` (
-  `Alien_ID` int(11) NOT NULL,
+CREATE TABLE `Kund` (
+  `KundID` int(11) NOT NULL,
   `Registreringsdatum` date DEFAULT NULL,
   `Losenord` varchar(6) DEFAULT NULL,
   `Namn` varchar(20) DEFAULT NULL,
   `Telefon` varchar(30) DEFAULT NULL,
-  `Plats` int(11) NOT NULL,
+  `Adress` int(11) NOT NULL,
   `Ansvarig_Agent` int(11) NOT NULL,
-  PRIMARY KEY (`Alien_ID`),
+  PRIMARY KEY (`KundID`),
   KEY `Ansvarig_Agent` (`Ansvarig_Agent`),
   KEY `Plats` (`Plats`),
   CONSTRAINT `Alien_ibfk_1` FOREIGN KEY (`Ansvarig_Agent`) REFERENCES `Agent` (`Agent_ID`),
