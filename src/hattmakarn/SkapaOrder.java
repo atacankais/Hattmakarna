@@ -4,10 +4,13 @@
  */
 package hattmakarn;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author ceciliaohberg
  */
-public class NewClass {
-    
+public class SkapaOrder {
+    private InfDB idb;
+    private String orderID; 
 }
