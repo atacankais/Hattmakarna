@@ -4,17 +4,22 @@
  */
 package hattmakarn;
 
-/**
- *
- * @author atacankais
- */
-public class HattMakarn {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class HattMakarn {
+    
+    private static InfDB idb;
+    
+    public static void main(String[] args) throws InfException {
+   try{
+       idb = new InfDB ("hattdb", "3306", "hattdba", "hattkey");
+       
+   } catch (InfException ex) {
+       Logger.getLogger(HattMakarn.class.getName()).log(Level.SEVERE, null, ex);
+   }
     }
     
 }
