@@ -86,6 +86,9 @@ private static InfDB idb;
 
         var sparaKundID = kundId.getText();
         var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
+        String namn = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
+
+        
         JOptionPane.showMessageDialog(null, "ID: " + sparaKundID + "\nNamn: ");
 
                     }  
