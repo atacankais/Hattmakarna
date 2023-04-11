@@ -18,27 +18,27 @@ public class SkapaOrder extends javax.swing.JFrame {
      */
     public SkapaOrder() {
         initComponents();
-        fillCbBox();
+//        fillCbBox();
         try{
             idb = new InfDB("hattdb", "3306", "hattdba", "hattkey");
             }
         catch (InfException ex){}
     }
     
-    private void fillCbBox(){
-        String getId = "select employeeID from employee";
-        ArrayList<String> employeeId;
-        
-        try{
-            employeeId = idb.fetchColumn(getId);
-            
-            for(String eId : employeeId)
-            {
-                CbAnstallningsID.addItem(eId);
-            }
-        }
-        catch (InfException ex){}
-    }
+//    private void fillCbBox(){
+//        String getId = "select employeeID from employee";
+//        ArrayList<String> employeeId;
+//        
+//        try{
+//            employeeId = idb.fetchColumn(getId);
+//            
+//            for(String eId : employeeId)
+//            {
+//                CbAnstallningsID.addItem(eId);
+//            }
+//        }
+//        catch (InfException ex){}
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +58,9 @@ public class SkapaOrder extends javax.swing.JFrame {
         TaInfo = new javax.swing.JTextArea();
         BtnSkapaOrder = new javax.swing.JButton();
         BtnRegistreraKund = new javax.swing.JButton();
-        CbAnstallningsID = new javax.swing.JComboBox<>();
         LabelDatum = new javax.swing.JLabel();
         TfDatum = new javax.swing.JTextField();
+        TfAnstallningsID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,13 +96,6 @@ public class SkapaOrder extends javax.swing.JFrame {
             }
         });
 
-        CbAnstallningsID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CbAnstallningsID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CbAnstallningsIDActionPerformed(evt);
-            }
-        });
-
         LabelDatum.setText("Datum:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,9 +116,9 @@ public class SkapaOrder extends javax.swing.JFrame {
                                     .addGap(18, 55, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(TfOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(CbAnstallningsID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TfOrderID)
+                                        .addComponent(TfAnstallningsID, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                                     .addGap(26, 26, 26)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(BtnSkapaOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +160,7 @@ public class SkapaOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelAnstallningsID)
                     .addComponent(BtnSkapaOrder)
-                    .addComponent(CbAnstallningsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TfAnstallningsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
@@ -187,26 +180,26 @@ public class SkapaOrder extends javax.swing.JFrame {
     private void BtnSkapaOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSkapaOrderActionPerformed
         try{
             String PhoneId = TfTelefonnummer.getText();
-            String id = "select CustomerID from customer where Phone = '"+PhoneId+"'";
+            String question = "select CustomerID from customer where Phone = " + "'"+PhoneId+"'";
+      
+            String cId = idb.fetchSingle(question);
             
-            String cId = idb.fetchSingle(id);
+//            String cId = idb.fetchSingle(id);
             String dateToday = TfDatum.getText();
             String oId = TfOrderID.getText();
-            String eId = CbAnstallningsID.getSelectedItem().toString();
+            String eId = TfAnstallningsID.getText();
+//            String eId = CbAnstallningsID.getSelectedItem().toString();
             String spec = TaInfo.getText();
             
-            String createOrder = "insert into customer values ('"+ cId +"','"+ eId +"','" + dateToday +"','" + oId + "','" + spec +"')";
+            String createOrder = "insert into order values ('"+ oId +"','" + dateToday + "','" + eId +"','" + cId + "','" + spec +"')";
             idb.insert(createOrder);
+            
         }
         
         catch(InfException ettUndantag){
             JOptionPane.showMessageDialog(null, "Kund finns ej registrerad!");
         }
     }//GEN-LAST:event_BtnSkapaOrderActionPerformed
-
-    private void CbAnstallningsIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbAnstallningsIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CbAnstallningsIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,13 +239,13 @@ public class SkapaOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegistreraKund;
     private javax.swing.JButton BtnSkapaOrder;
-    private javax.swing.JComboBox<String> CbAnstallningsID;
     private javax.swing.JLabel LabelAnstallningsID;
     private javax.swing.JLabel LabelDatum;
     private javax.swing.JLabel LabelOrderID;
     private javax.swing.JLabel LabelSkapaOrder;
     private javax.swing.JLabel LabelTelefonnummer;
     private javax.swing.JTextArea TaInfo;
+    private javax.swing.JTextField TfAnstallningsID;
     private javax.swing.JTextField TfDatum;
     private javax.swing.JTextField TfOrderID;
     private javax.swing.JTextField TfTelefonnummer;
