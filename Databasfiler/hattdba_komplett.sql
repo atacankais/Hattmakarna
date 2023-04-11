@@ -60,10 +60,9 @@ CREATE TABLE `Customer` (
   `Phone` varchar(30) DEFAULT NULL,
   `Address` varchar(20) NOT NULL,
   `Mail` varchar(20) NOT NULL,
-  'Head_measurement'int(6) NOT NULL,
-  PRIMARY KEY (`CustomerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `Head_measurement` int(6) NOT NULL,
+  PRIMARY KEY (`CustomerID`))
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
 
 --
 -- Dumping data for table `Customer`
@@ -75,72 +74,15 @@ INSERT INTO `Customer` VALUES ('C1','Ulla','070-1111','skostigen 2','ulla@gmail.
 /*!40000 ALTER TABLE `Customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `Order`
---
-
-DROP TABLE IF EXISTS `Order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Order` (
-  `OrderID` varchar(11) NOT NULL,
-  `Datum` varchar(8) DEFAULT NULL,
-  PRIMARY KEY (`OrderID`),
-  FOREIGN KEY ('EmployeeID') REFERENCES 'Employee' ('EmployeeID'),
-  FOREIGN KEY ('CustomerID') REFERENCES 'Customer' ('CustomerID'),
-  FOREIGN KEY ('ProductionID') REFERENCES 'Production' ('ProductionID'),
-  FOREIGN KEY ('ArticleID') REFERENCES 'Article' ('ArticleID')
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Order`
---
-
-LOCK TABLES `Order` WRITE;
-/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
-INSERT INTO `Order` VALUES ('O1', '23-08-22', 'E1', 'C1', 'P1', 'A1');
-/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
-INSERT INTO `Order` VALUES ('O2','23-08-21', 'E2', 'C2', 'P2', 'A2');
-/*!40000 ALTER TABLE `Order` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
--- Table structure for table `Production`
---
-
-DROP TABLE IF EXISTS `Production`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `Production` (
-  `ProductionID` varchar(20) NOT NULL,
-  'Status' varchar(10) NOT NULL,
-  PRIMARY KEY (`ProductionID`),
-  FOREIGN KEY ('ArticleID') REFERENCES 'Article'(ArticleID),
-  FOREIGN KEY ('EmployeeID') REFERENCES 'Employee' (EmployeeID)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Production`
---
-
-LOCK TABLES `Production` WRITE;
-/*!40000 ALTER TABLE `Production` DISABLE KEYS */;
-INSERT INTO `Production` VALUES ('P1', 'Lagd', 'A1', 'E1');
-/*!40000 ALTER TABLE `Production` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Article`
---
 
 DROP TABLE IF EXISTS `Article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `Article` (
   `ArticleID` varchar(6) NOT NULL,
-  'Article_Name' varchar(40) NOT NULL,
+  `Article_Name` varchar(40) NOT NULL,
   `Price` int(10) NOT NULL,
   `Material_Spec` varchar(400) NOT NULL,
   PRIMARY KEY (`ArticleID`)
@@ -157,9 +99,69 @@ INSERT INTO `Article` VALUES ('A1', 'Blå cowboyhatt', 500, '2 två meter blått
 /*!40000 ALTER TABLE `Article` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+
 --
 -- Table structure for table `Order_Contains_Of_Article`
 --
+
+
+
+
+DROP TABLE IF EXISTS `Order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Order` (
+  `OrderID` varchar(11) NOT NULL,
+  `Datum` varchar(8) DEFAULT NULL,
+  `EmployeeID`varchar (10) NOT NULL,
+ `CustomerID` varchar (20) NOT NULL,
+ `ProductionID` VARCHAR(20) NOT NULL,
+ `ArticleID` VARCHAR (20) NOT NULL,
+  PRIMARY KEY (`OrderID`),
+  FOREIGN KEY (`EmployeeID`) REFERENCES `Employee` (`EmployeeID`),
+  FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`),
+  FOREIGN KEY (`ProductionID`) REFERENCES `Production` (`ProductionID`),
+  FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Order`
+--
+
+LOCK TABLES `Order` WRITE;
+/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
+INSERT INTO `Order` VALUES ('O1', '23-08-22', 'E1', 'C1', 'P1', 'A1');
+/*!40000 ALTER TABLE `Order` DISABLE KEYS */;
+INSERT INTO `Order` VALUES ('O2','23-08-21', 'E2', 'C2', 'P2', 'A2');
+/*!40000 ALTER TABLE `Order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `Production`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Production` (
+  `ProductionID` varchar(20) NOT NULL,
+  `Status` varchar(10) NOT NULL,
+  `ArticleID` varchar(20) not null ,
+  `EmployeeID` varchar(20) not null,
+  PRIMARY KEY (`ProductionID`),
+  FOREIGN KEY (`ArticleID`) REFERENCES `Article`(`ArticleID`),
+  FOREIGN KEY (`EmployeeID`) REFERENCES `Employee` (`EmployeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_sv_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Production`
+--
+
+LOCK TABLES `Production` WRITE;
+/*!40000 ALTER TABLE `Production` DISABLE KEYS */;
+INSERT INTO `Production` VALUES ('P1', 'Lagd', 'A1', 'E1');
+/*!40000 ALTER TABLE `Production` ENABLE KEYS */;
+UNLOCK TABLES;
+
 
 DROP TABLE IF EXISTS `Order_Contains_Of_Article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -183,4 +185,7 @@ LOCK TABLES `Order_Contains_Of_Article` WRITE;
 INSERT INTO `Order_Contains_Of_Article` VALUES ('O1', 'A1');
 /*!40000 ALTER TABLE `Order_Contains_Of_Article` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+
 
