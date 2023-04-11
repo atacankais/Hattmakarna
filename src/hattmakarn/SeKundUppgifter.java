@@ -84,18 +84,16 @@ private static InfDB idb;
     private void valjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valjKundActionPerformed
                try {  
 
-        var sparaKundID = kundId.getText();
-        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-        String namn = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-                  
-        
-        var telefon = idb.fetchSingle("SELECT Phone FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-        var adress = idb.fetchSingle("SELECT Address FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-        var mail = idb.fetchSingle("SELECT Mail FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-        var huvudmatt = idb.fetchSingle("SELECT Head_measurement FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
+        var saveCustomerID = kundId.getText();
+        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga
+        String name = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga 
+        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga
+        var address = idb.fetchSingle("SELECT Address FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga
+        var mail = idb.fetchSingle("SELECT Mail FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga
+        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where CustomerID = '" + saveCustomerID + "'"); //metod för att skriva sql fråga
         
         
-        JOptionPane.showMessageDialog(null, "ID: " + sparaKundID + "\nNamn: " + namn + "\nTelefonnummer:" + telefon + "\nAdress:" + adress + "\nMail:" + mail + "\nHuvudmått:" + huvudmatt + "");
+        JOptionPane.showMessageDialog(null, "ID: " + saveCustomerID + "\nNamn: " + name + "\nTelefonnummer:" + phonenumber + "\nAdress:" + address + "\nMail:" + mail + "\nHuvudmått:" + head_measurement + "");
 
                     }  
         
