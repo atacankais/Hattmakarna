@@ -41,7 +41,7 @@ private static InfDB idb;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sök kundnamn");
+        jLabel1.setText("Sök KundID:");
 
         valjKund.setText("OK");
         valjKund.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,7 @@ private static InfDB idb;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addComponent(valjKund)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
