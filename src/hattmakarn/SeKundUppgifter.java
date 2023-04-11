@@ -4,10 +4,9 @@
  */
 
 package hattmakarn;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,32 +17,14 @@ private static InfDB idb;
     /**
      * Creates new form SeKundUppgifter
      */
-    public SeKundUppgifter(InfDB idb) {
+    public SeKundUppgifter() {
         initComponents();
-        this.idb = idb;
-        fyllBoxMedKundNamn();
-    }
-
-    
-    private void fyllBoxMedKundNamn() {
-        
-         
-        String fraga = "SELECT namn from Customer";
-        
-        ArrayList <String> allaCustomerNamn;
-        
-        try {
-            allaCustomerNamn = idb.fetchColumn(fraga);
+          try {
+           idb = new InfDB("hattdb", "3306", "hattdba", "hattkey");
+        } catch (InfException ex) {
             
-            for(String namn:allaCustomerNamn) {
-                valjCustomer.addItem(namn);   
-            }
-            
-        }catch(InfException e) {
-            JOptionPane.showMessageDialog(null, "fel");
         }
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,13 +36,19 @@ private static InfDB idb;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        valjCustomer = new javax.swing.JComboBox<>();
+        kundId = new javax.swing.JTextField();
+        valjKund = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Sök kundnamn");
 
-        valjCustomer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        valjKund.setText("OK");
+        valjKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valjKundActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,25 +57,44 @@ private static InfDB idb;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(valjCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(280, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(48, 48, 48)
+                        .addComponent(kundId, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(valjKund)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(valjCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(kundId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(valjKund)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void valjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valjKundActionPerformed
+               try {  
+
+        var sparaKundID = kundId.getText();
+        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
+        JOptionPane.showMessageDialog(null, "ID: " + sparaKundID + "\nNamn: ");
+
+                    }  
+        
+        catch(InfException a) {
+           JOptionPane.showMessageDialog(null, "Någonting gick fel");   //utskriften när undantag kastas
+           System.out.println("Någonting gick fel");
+        }
+    }//GEN-LAST:event_valjKundActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,13 +126,14 @@ private static InfDB idb;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SeKundUppgifter(idb).setVisible(true);
+                new SeKundUppgifter().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JComboBox<String> valjCustomer;
+    private javax.swing.JTextField kundId;
+    private javax.swing.JButton valjKund;
     // End of variables declaration//GEN-END:variables
 }
