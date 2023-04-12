@@ -29,7 +29,7 @@
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="kundId" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="sokKundnamnTr" min="-2" pref="111" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
@@ -46,7 +46,7 @@
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="kundId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sokKundnamnTr" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="valjKund" min="-2" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
         <Property name="text" type="java.lang.String" value="S&#xf6;k kundnamn"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="kundId">
+    <Component class="javax.swing.JTextField" name="sokKundnamnTr">
     </Component>
     <Component class="javax.swing.JButton" name="valjKund">
       <Properties>
