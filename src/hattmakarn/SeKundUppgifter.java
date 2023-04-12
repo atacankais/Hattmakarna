@@ -36,7 +36,7 @@ private static InfDB idb;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        kundId = new javax.swing.JTextField();
+        sokKundnamnTr = new javax.swing.JTextField();
         valjKund = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ private static InfDB idb;
                         .addGap(43, 43, 43)
                         .addComponent(jLabel1)
                         .addGap(48, 48, 48)
-                        .addComponent(kundId, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addComponent(valjKund)))
@@ -72,7 +72,7 @@ private static InfDB idb;
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(kundId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(valjKund)
                 .addContainerGap(156, Short.MAX_VALUE))
@@ -82,21 +82,29 @@ private static InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void valjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valjKundActionPerformed
-               try {  
+        try {
+        var saveCustomerName = sokKundnamnTr.getText();
+        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
+        String name = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + saveCustomerName + "'");
+        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
+        var address = idb.fetchSingle("SELECT Address FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
+        var mail = idb.fetchSingle("SELECT Mail FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
+        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
 
-        var sparaKundID = kundId.getText();
-        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
-        String namn = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + sparaKundID + "'"); //metod för att skriva sql fråga
 
-        
-        JOptionPane.showMessageDialog(null, "ID: " + sparaKundID + "\nNamn: ");
+        JOptionPane.showMessageDialog(null, "ID: " + saveCustomerName + "\nNamn: " + name + "\nTelefonnummer:" + phonenumber + "\nAdress:" + address + "\nMail:" + mail + "\nHuvudmått:" + head_measurement + "");
 
-                    }  
-        
+                    }
+
         catch(InfException a) {
-           JOptionPane.showMessageDialog(null, "Någonting gick fel");   //utskriften när undantag kastas
+           JOptionPane.showMessageDialog(null, "Någonting gick fel");
            System.out.println("Någonting gick fel");
         }
+
+
+
+
+    
     }//GEN-LAST:event_valjKundActionPerformed
 
     /**
@@ -136,7 +144,7 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField kundId;
+    private javax.swing.JTextField sokKundnamnTr;
     private javax.swing.JButton valjKund;
     // End of variables declaration//GEN-END:variables
 }
