@@ -92,7 +92,7 @@ private static InfDB idb;
         var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Name = '" + saveCustomerName + "'"); 
 
 
-        JOptionPane.showMessageDialog(null, "ID: " + saveCustomerName + "\nNamn: " + name + "\nTelefonnummer:" + phonenumber + "\nAdress:" + address + "\nMail:" + mail + "\nHuvudmått:" + head_measurement + "");
+        JOptionPane.showMessageDialog(null, "ID: " + id + "\nNamn: " + name + "\nTelefonnummer: " + phonenumber + "\nAdress: " + address + "\nMail: " + mail + "\nHuvudmått: " + head_measurement + " cm" + "");
 
                     }
 
