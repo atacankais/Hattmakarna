@@ -84,12 +84,12 @@ private static InfDB idb;
     private void valjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valjKundActionPerformed
         try {
         var saveCustomerName = sokKundnamnTr.getText();
-        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
-        String name = idb.fetchSingle("SELECT Name FROM Customer where CustomerID = '" + saveCustomerName + "'");
-        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
-        var address = idb.fetchSingle("SELECT Address FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
-        var mail = idb.fetchSingle("SELECT Mail FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
-        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where CustomerID = '" + saveCustomerName + "'"); 
+        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where Name = '" + saveCustomerName + "'"); 
+        String name = idb.fetchSingle("SELECT Name FROM Customer where Name = '" + saveCustomerName + "'");
+        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where Name = '" + saveCustomerName + "'"); 
+        var address = idb.fetchSingle("SELECT Address FROM Customer where Name = '" + saveCustomerName + "'"); 
+        var mail = idb.fetchSingle("SELECT Mail FROM Customer where Name = '" + saveCustomerName + "'"); 
+        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Name = '" + saveCustomerName + "'"); 
 
 
         JOptionPane.showMessageDialog(null, "ID: " + saveCustomerName + "\nNamn: " + name + "\nTelefonnummer:" + phonenumber + "\nAdress:" + address + "\nMail:" + mail + "\nHuvudmått:" + head_measurement + "");
