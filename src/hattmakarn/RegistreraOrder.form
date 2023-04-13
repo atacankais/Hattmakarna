@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cbLagerFord" pref="116" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="tfPris" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                              <Component id="tfArtikelNummerLagerford" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="checkLagerFord" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="buttonLagerFord" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfHuvudMått" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel4" min="-2" pref="110" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButton2" pref="139" max="32767" attributes="0"/>
+                              <Component id="cbHattypKundAnpassad" max="32767" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                              <Component id="cbKundAnpassadDekoration4" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cbKundAnpassadDekoration3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbKundAnpassadDekoration2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel6" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="tfArtikelNummerKundAnpassad" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="tfPrisKundAnpassad1" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="tfHuvudMåttKundAnpassad" min="-2" pref="71" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tfArtikelNummerSpecialAnpassad" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="jLabel18" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="jLabel17" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jLabel16" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jLabel13" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="cbSpecialAnpassadDekoration2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton3" min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="cbSpecialAnpassadTyg" min="-2" pref="128" max="-2" attributes="0"/>
+                          <Component id="cbSpecialAnpassadDekoration1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSpecialAnpassadDekoration3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel14" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="jLabel15" min="-2" pref="117" max="-2" attributes="0"/>
+                          <Component id="tfHuvudMåttSpecialAnpassad" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="tfPrisSpecialAnpassad" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="checkKundAnpassad" min="-2" pref="85" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="buttonKundAnpassad" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="buttonSpecialAnpassad" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkSpecialAnpassad" min="-2" pref="85" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton3" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="jButton2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbLagerFord" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbHattypKundAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSpecialAnpassadTyg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbKundAnpassadDekoration4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbSpecialAnpassadDekoration1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbKundAnpassadDekoration2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbSpecialAnpassadDekoration2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cbKundAnpassadDekoration3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbSpecialAnpassadDekoration3" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfHuvudMåttKundAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfHuvudMåttSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfHuvudMått" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="tfPrisKundAnpassad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfPrisSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfPris" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tfArtikelNummerKundAnpassad" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfArtikelNummerSpecialAnpassad" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfArtikelNummerLagerford" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="checkLagerFord" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkKundAnpassad" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkSpecialAnpassad" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="buttonLagerFord" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonKundAnpassad" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonSpecialAnpassad" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lagerf&#xf6;rd hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kundanpassad hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Specialanpassad hatt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbLagerFord">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="8">
+            <StringItem index="0" value="Filthatt kanin"/>
+            <StringItem index="1" value="Filthatt ull"/>
+            <StringItem index="2" value="Panamahatt"/>
+            <StringItem index="3" value="Str&#xe5;hatt"/>
+            <StringItem index="4" value="Tyghatt ull"/>
+            <StringItem index="5" value="Tyghatt bomull"/>
+            <StringItem index="6" value="Tyghatt linne"/>
+            <StringItem index="7" value="L&#xe4;derh&#xe4;tta"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbLagerFordActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Huvudm&#xe5;tt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfHuvudM&#xe5;tt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfHuvudM&#xe5;ttActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pris"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPris">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Artikelnummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfArtikelNummerKundAnpassad">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfArtikelNummerKundAnpassadActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbHattypKundAnpassad">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="8">
+            <StringItem index="0" value="Filthatt kanin"/>
+            <StringItem index="1" value="Filthatt ull"/>
+            <StringItem index="2" value="Panamahatt"/>
+            <StringItem index="3" value="Str&#xe5;hatt"/>
+            <StringItem index="4" value="Tyghatt ull"/>
+            <StringItem index="5" value="Tyghatt bomull"/>
+            <StringItem index="6" value="Tyghatt linne"/>
+            <StringItem index="7" value="L&#xe4;derh&#xe4;tta"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj lagerf&#xf6;rd hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj lagerf&#xf6;rd hatt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbSpecialAnpassadDekoration1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbKundAnpassadDekoration2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbKundAnpassadDekoration3">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbSpecialAnpassadTyg">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="16">
+            <StringItem index="0" value="Ullfilt"/>
+            <StringItem index="1" value="Kaninfilt"/>
+            <StringItem index="2" value="Toquillastr&#xe5;"/>
+            <StringItem index="3" value="Rishalm"/>
+            <StringItem index="4" value="Palml&#xf6;v"/>
+            <StringItem index="5" value="Majsblad"/>
+            <StringItem index="6" value="Hampafibrer"/>
+            <StringItem index="7" value="L&#xe4;der"/>
+            <StringItem index="8" value="Bomull"/>
+            <StringItem index="9" value="Linne"/>
+            <StringItem index="10" value="Ull"/>
+            <StringItem index="11" value="Silke"/>
+            <StringItem index="12" value="Satin"/>
+            <StringItem index="13" value="Tweed"/>
+            <StringItem index="14" value="Polyester"/>
+            <StringItem index="15" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tyg"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pris"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPrisSpecialAnpassad">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Artikelnummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfArtikelNummerLagerford">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfArtikelNummerLagerfordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Huvudm&#xe5;tt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfHuvudM&#xe5;ttSpecialAnpassad">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfHuvudM&#xe5;ttSpecialAnpassadActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbKundAnpassadDekoration4">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbSpecialAnpassadDekoration2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbSpecialAnpassadDekoration3">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Band"/>
+            <StringItem index="1" value="Strutsfj&#xe4;der"/>
+            <StringItem index="2" value="P&#xe5;f&#xe5;gerfj&#xe4;der"/>
+            <StringItem index="3" value="H&#xf6;nsfj&#xe4;der"/>
+            <StringItem index="4" value="Tygblomma"/>
+            <StringItem index="5" value="P&#xe4;rlor"/>
+            <StringItem index="6" value="Spetts"/>
+            <StringItem index="7" value="Lackeratpapper"/>
+            <StringItem index="8" value="Lurextr&#xe5;d"/>
+            <StringItem index="9" value="Fuskp&#xe4;ls"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dekoration 3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel16">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Huvudm&#xe5;tt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfHuvudM&#xe5;ttKundAnpassad">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfHuvudM&#xe5;ttKundAnpassadActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pris"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfPrisKundAnpassad1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Artikelnummer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfArtikelNummerSpecialAnpassad">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfArtikelNummerSpecialAnpassadActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkLagerFord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Br&#xe5;dskande"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkKundAnpassad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Br&#xe5;dskande"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkSpecialAnpassad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Br&#xe5;dskande"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonLagerFord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonKundAnpassad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonKundAnpassadActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonSpecialAnpassad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
