@@ -7,7 +7,8 @@ package hattmakarn;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-
+import javax.swing.JTextField;
+import java.util.ArrayList;
 /**
  *
  * @author clarajonsson
@@ -28,6 +29,28 @@ private static InfDB idb;
        
     }
 
+    
+    private boolean phonenumberExists(JTextField telefonnummerTextruta){
+        boolean phoneExists = false;
+        
+        try {
+            String fraga = "Select Phone from Customer";
+            ArrayList<String>phoneList;
+            phoneList = idb.fetchColumn(fraga);
+            for(String phone : phoneList){
+                if(phone.equals(telefonnummerTextruta.getText())){
+                    phoneExists = true;
+                
+                }
+               // return phoneExists;
+            }
+            
+        } catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Något gick fel");
+                    }
+        return phoneExists;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,8 +190,8 @@ private static InfDB idb;
     }//GEN-LAST:event_huvudmattTextrutaActionPerformed
 
     private void registreraKundKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registreraKundKnappActionPerformed
-       
-        
+        {
+      
         try{
             String name = namnTextruta.getText();
             String number = telefonnummerTextruta.getText();
@@ -176,17 +199,21 @@ private static InfDB idb;
             String mail = mailTextruta.getText();
             String head_measurement = huvudmattTextruta.getText();
            // int hMeasurement = Integer.parseInt (head_measurement);
+           
+             if(phonenumberExists(telefonnummerTextruta) == false){
+            
+                   
+            
             
             String createCustomer = "Insert into Customer (Name, Phone, Address, Mail, Head_measurement) values ('"+ name +"','" + number +"','" + address +"','" + mail +"','" + head_measurement +"')";
-        
-                    
-            
             idb.insert(createCustomer);
             
             JOptionPane.showMessageDialog(null, "Ny kund registrerad");
-            
-            
+             }
+             else if(phonenumberExists(telefonnummerTextruta) == true)
+            JOptionPane.showMessageDialog(null, "Telefonnumret finns redan");
         }
+       
         
             catch(InfException ettUndantag){
                 JOptionPane.showMessageDialog(null, "Kunde ej skapa kund");
@@ -194,7 +221,7 @@ private static InfDB idb;
         
         
         
-        
+       }
         
         
         
