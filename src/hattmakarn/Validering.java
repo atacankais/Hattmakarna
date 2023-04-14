@@ -4,34 +4,19 @@
  */
 package hattmakarn;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import java.util.ArrayList;
 
 /**
  *
  * @author clarajonsson
  */
 public class Validering {
- //private static InfDB idb;
+
+
  
- /*try {
-   idb = new InfDB ("hattdb", "3306", "hattdba", "hattkey");
-} catch (InfException ex) {
-    
-}
-    
-    
-private boolean kundTelefonFinnsRedan(JTextField telefonnummerTextruta){
- 
-    boolean phoneExists = false;
-    
-    try {
-        String fraga = "Select Phone from Customer";
-        Arraylist <String> phoneList;
-        phoneList = idb.fetchColumn(fraga);
-        for
-    }
-    
-}*/
-    
     
     
 }
