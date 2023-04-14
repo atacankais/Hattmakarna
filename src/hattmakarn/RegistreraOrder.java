@@ -25,7 +25,10 @@ private static InfDB idb;
         } catch (InfException ex) {
             
         }
+          fyllcbKundAnpassad();
           fyllcbLagerHatt();
+          fyllcbSpecialAnpassad();
+          
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,8 +122,6 @@ private static InfDB idb;
             }
         });
 
-        cbHattypKundAnpassad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filthatt kanin", "Filthatt ull", "Panamahatt", "Stråhatt", "Tyghatt ull", "Tyghatt bomull", "Tyghatt linne", "Läderhätta" }));
-
         jLabel4.setText("Välj lagerförd hatt");
 
         jLabel5.setText("Välj lagerförd hatt");
@@ -136,8 +137,6 @@ private static InfDB idb;
         jLabel7.setText("Dekoration 3");
 
         jLabel8.setText("Dekoration 2");
-
-        cbSpecialAnpassadTyg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ullfilt", "Kaninfilt", "Toquillastrå", "Rishalm", "Palmlöv", "Majsblad", "Hampafibrer", "Läder", "Bomull", "Linne", "Ull", "Silke", "Satin", "Tweed", "Polyester", " " }));
 
         jLabel9.setText("Tyg");
 
@@ -395,6 +394,38 @@ private static InfDB idb;
 
             for (String lagerHatt : LagerFordaHattar) {
                 cbLagerFord.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+        }
+    private void fyllcbKundAnpassad(){ //Fylla 
+            String fraga = "SELECT Article_Name FROM article where Article_stocked = 1";
+          
+        ArrayList<String> LagerFordaHattar;
+        try {
+            LagerFordaHattar = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : LagerFordaHattar) {
+                cbHattypKundAnpassad.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+        }
+    private void fyllcbSpecialAnpassad(){ //Fylla 
+            String fraga = "SELECT Material_Name FROM material where Type = 'Bas';";
+          
+        ArrayList<String> MatrialTyger;
+        try {
+            MatrialTyger = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialTyger) {
+                cbSpecialAnpassadTyg.addItem(lagerHatt);
             }
 
         } catch (InfException ettUndantag) {
