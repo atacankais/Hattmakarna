@@ -285,16 +285,7 @@
     <Component class="javax.swing.JComboBox" name="cbHattypKundAnpassad">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
-            <StringItem index="0" value="Filthatt kanin"/>
-            <StringItem index="1" value="Filthatt ull"/>
-            <StringItem index="2" value="Panamahatt"/>
-            <StringItem index="3" value="Str&#xe5;hatt"/>
-            <StringItem index="4" value="Tyghatt ull"/>
-            <StringItem index="5" value="Tyghatt bomull"/>
-            <StringItem index="6" value="Tyghatt linne"/>
-            <StringItem index="7" value="L&#xe4;derh&#xe4;tta"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -392,24 +383,7 @@
     <Component class="javax.swing.JComboBox" name="cbSpecialAnpassadTyg">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="16">
-            <StringItem index="0" value="Ullfilt"/>
-            <StringItem index="1" value="Kaninfilt"/>
-            <StringItem index="2" value="Toquillastr&#xe5;"/>
-            <StringItem index="3" value="Rishalm"/>
-            <StringItem index="4" value="Palml&#xf6;v"/>
-            <StringItem index="5" value="Majsblad"/>
-            <StringItem index="6" value="Hampafibrer"/>
-            <StringItem index="7" value="L&#xe4;der"/>
-            <StringItem index="8" value="Bomull"/>
-            <StringItem index="9" value="Linne"/>
-            <StringItem index="10" value="Ull"/>
-            <StringItem index="11" value="Silke"/>
-            <StringItem index="12" value="Satin"/>
-            <StringItem index="13" value="Tweed"/>
-            <StringItem index="14" value="Polyester"/>
-            <StringItem index="15" value=" "/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
