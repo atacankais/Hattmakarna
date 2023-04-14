@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hattmakarn;
-
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-
 /**
  *
  * @author theod
@@ -18,13 +19,14 @@ private static InfDB idb;
      */
     public RegistreraOrder() {
         initComponents();
+       
           try {
            idb = new InfDB("hattdb", "3306", "hattdba", "hattkey");
         } catch (InfException ex) {
             
         }
+          fyllcbLagerHatt();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +95,6 @@ private static InfDB idb;
             }
         });
 
-        cbLagerFord.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filthatt kanin", "Filthatt ull", "Panamahatt", "Stråhatt", "Tyghatt ull", "Tyghatt bomull", "Tyghatt linne", "Läderhätta" }));
         cbLagerFord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbLagerFordActionPerformed(evt);
@@ -195,6 +196,11 @@ private static InfDB idb;
         checkSpecialAnpassad.setText("Brådskande");
 
         buttonLagerFord.setText("Lägg till");
+        buttonLagerFord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLagerFordActionPerformed(evt);
+            }
+        });
 
         buttonKundAnpassad.setText("Lägg till");
         buttonKundAnpassad.addActionListener(new java.awt.event.ActionListener() {
@@ -377,11 +383,29 @@ private static InfDB idb;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cbLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLagerFordActionPerformed
-        // TODO add your handling code here:
+    // TODO add your handling code here:
+    //valdLagerFord = cbLagerFord.getSelectedItem().toString();
     }//GEN-LAST:event_cbLagerFordActionPerformed
+    private void fyllcbLagerHatt(){ //Fylla 
+            String fraga = "SELECT Article_Name FROM article where Article_stocked = 1";
+          
+        ArrayList<String> LagerFordaHattar;
+        try {
+            LagerFordaHattar = idb.fetchColumn(fraga);
 
+            for (String lagerHatt : LagerFordaHattar) {
+                cbLagerFord.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+        }
+    
     private void tfHuvudMåttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttActionPerformed
         // TODO add your handling code here:
+        JTextField huvudMått = tfHuvudMått;
     }//GEN-LAST:event_tfHuvudMåttActionPerformed
 
     private void tfArtikelNummerKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelNummerKundAnpassadActionPerformed
@@ -408,9 +432,16 @@ private static InfDB idb;
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonKundAnpassadActionPerformed
 
+    private void buttonLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerFordActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "");
+            System.out.println("Internt felmeddelande");
+    }//GEN-LAST:event_buttonLagerFordActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -442,6 +473,7 @@ private static InfDB idb;
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonKundAnpassad;
