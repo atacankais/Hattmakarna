@@ -7,10 +7,12 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
+
 /**
  *
  * @author carolinaappel
  */
+import java.util.ArrayList;
 public class SeOrderInfo extends javax.swing.JFrame {
 private static InfDB idb;
     /**
@@ -36,23 +38,26 @@ private static InfDB idb;
 
         jLabel1 = new javax.swing.JLabel();
         sokKundnamnTr = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         ValjKund = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        anställningT = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        articleT = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ordernummerT = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        materialT = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        statusT = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Sök Kundnamn");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Ordrar");
 
         ValjKund.setText("Sök");
         ValjKund.addActionListener(new java.awt.event.ActionListener() {
@@ -61,39 +66,96 @@ private static InfDB idb;
             }
         });
 
+        anställningT.setColumns(20);
+        anställningT.setRows(5);
+        jScrollPane2.setViewportView(anställningT);
+
+        articleT.setColumns(20);
+        articleT.setRows(5);
+        jScrollPane3.setViewportView(articleT);
+
+        ordernummerT.setColumns(20);
+        ordernummerT.setRows(5);
+        jScrollPane4.setViewportView(ordernummerT);
+
+        materialT.setColumns(20);
+        materialT.setRows(5);
+        jScrollPane5.setViewportView(materialT);
+
+        jLabel3.setText("Artikel");
+
+        jLabel4.setText("Anställningsnummer");
+
+        jLabel5.setText("Material");
+
+        jLabel6.setText("Status");
+
+        statusT.setColumns(20);
+        statusT.setRows(5);
+        jScrollPane6.setViewportView(statusT);
+
+        jLabel7.setText("Ordernummer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(ValjKund))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ValjKund))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel5)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel6)
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
-                        .addComponent(ValjKund)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addComponent(ValjKund))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,16 +163,42 @@ private static InfDB idb;
 
     private void ValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValjKundActionPerformed
         try {
-        var saveCustomerName = sokKundnamnTr.getText();
-        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where Name = '" + saveCustomerName + "'"); 
-        String name = idb.fetchSingle("SELECT Name FROM Customer where Name = '" + saveCustomerName + "'");
-        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var address = idb.fetchSingle("SELECT Address FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var mail = idb.fetchSingle("SELECT Mail FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Name = '" + saveCustomerName + "'"); 
-
-
-        JOptionPane.showMessageDialog(null, "ID: " + id + "\nNamn: " + name + "\nTelefonnummer: " + phonenumber + "\nAdress: " + address + "\nMail: " + mail + "\nHuvudmått: " + head_measurement + " cm" + "");
+//        //var saveCustomerName = sokKundnamnTr.getText();
+//        //var id = idb.fetchSingle("SELECT CustomerID FROM Customer where Name = '" + saveCustomerName + "'"); 
+//        //String name = idb.fetchSingle("SELECT Name FROM Customer where Name = '" + saveCustomerName + "'");
+//        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where Name = '" + saveCustomerName + "'"); 
+//        var address = idb.fetchSingle("SELECT Address FROM Customer where Name = '" + saveCustomerName + "'"); 
+//        var mail = idb.fetchSingle("SELECT Mail FROM Customer where Name = '" + saveCustomerName + "'"); 
+//        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Name = '" + saveCustomerName + "'"); 
+//        
+//        var id = idb.fetchSingle("SELECT orderID from order where Name = '" + saveCustomerName + "'");
+//        
+//        
+//        String kundnamn = sokKundnamnTr.getText();
+//       
+//
+//        String seOrder = "Select "
+        String name = sokKundnamnTr.getText();
+        String showArticle = "SELECT a.Article_Name, o.OrderID, e.EmployeeID, m.Material_name, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
+        ArrayList<String> articles = idb.fetchColumn(showArticle);
+        
+        for (String thisArticle : articles){
+            articleT.append(thisArticle);
+            articleT.append("\n");
+                
+        }
+        
+//        String name = sokKundnamnTr.getText();
+        String showNumber = "SELECT e.EmployeeID, a.Article_Name, o.OrderID, m.Material_name, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
+        ArrayList<String> number = idb.fetchColumn(showNumber);
+        
+        for (String thisNumber : number){
+            anställningT.append(thisNumber);
+            anställningT.append("\n");
+                
+        }
+        
+       // JOptionPane.showMessageDialog(null, "ID: " + id + "\nNamn: " + name + "\nTelefonnummer: " + phonenumber + "\nAdress: " + address + "\nMail: " + mail + "\nHuvudmått: " + head_measurement + " cm" + "");
 
                     }
 
@@ -157,11 +245,22 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ValjKund;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextArea anställningT;
+    private javax.swing.JTextArea articleT;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea materialT;
+    private javax.swing.JTextArea ordernummerT;
     private javax.swing.JTextField sokKundnamnTr;
+    private javax.swing.JTextArea statusT;
     // End of variables declaration//GEN-END:variables
 }
