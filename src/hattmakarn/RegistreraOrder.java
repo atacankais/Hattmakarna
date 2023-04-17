@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hattmakarn;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -27,8 +29,13 @@ private static InfDB idb;
         }
           fyllcbKundAnpassad();
           fyllcbLagerHatt();
-          fyllcbSpecialAnpassad();
-          
+          fyllcbSpecialAnpassad();  
+          fyllcbKundAnpassadDekoration1();
+          fyllcbKundAnpassadDekoration2();
+          fyllcbKundAnpassadDekoration3();
+          fyllcbSpecialAnpassadDekoration1();
+          fyllcbSpecialAnpassadDekoration2();
+          fyllcbSpecialAnpassadDekoration3();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,10 +70,10 @@ private static InfDB idb;
         jLabel10 = new javax.swing.JLabel();
         tfPrisSpecialAnpassad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        tfArtikelNummerLagerford = new javax.swing.JTextField();
+        tfArtikelIDLagerFord = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         tfHuvudMåttSpecialAnpassad = new javax.swing.JTextField();
-        cbKundAnpassadDekoration4 = new javax.swing.JComboBox<>();
+        cbKundAnpassadDekoration1 = new javax.swing.JComboBox<>();
         cbSpecialAnpassadDekoration2 = new javax.swing.JComboBox<>();
         cbSpecialAnpassadDekoration3 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
@@ -114,6 +121,12 @@ private static InfDB idb;
 
         jLabel2.setText("Pris");
 
+        tfPris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPrisActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Artikelnummer");
 
         tfArtikelNummerKundAnpassad.addActionListener(new java.awt.event.ActionListener() {
@@ -144,9 +157,9 @@ private static InfDB idb;
 
         jLabel11.setText("Artikelnummer");
 
-        tfArtikelNummerLagerford.addActionListener(new java.awt.event.ActionListener() {
+        tfArtikelIDLagerFord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfArtikelNummerLagerfordActionPerformed(evt);
+                tfArtikelIDLagerFordActionPerformed(evt);
             }
         });
 
@@ -158,7 +171,12 @@ private static InfDB idb;
             }
         });
 
-        cbKundAnpassadDekoration4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbKundAnpassadDekoration1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbKundAnpassadDekoration1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKundAnpassadDekoration1ActionPerformed(evt);
+            }
+        });
 
         cbSpecialAnpassadDekoration2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
 
@@ -228,7 +246,7 @@ private static InfDB idb;
                                 .addComponent(tfPris, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfArtikelNummerLagerford, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfArtikelIDLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(checkLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(buttonLagerFord)
                                 .addComponent(tfHuvudMått, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +260,7 @@ private static InfDB idb;
                                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                                 .addComponent(cbHattypKundAnpassad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbKundAnpassadDekoration4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(cbKundAnpassadDekoration1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cbKundAnpassadDekoration3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cbKundAnpassadDekoration2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -305,7 +323,7 @@ private static InfDB idb;
                         .addGap(21, 21, 21)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbKundAnpassadDekoration4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbKundAnpassadDekoration1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,7 +378,7 @@ private static InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfArtikelNummerKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfArtikelNummerSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfArtikelNummerLagerford, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfArtikelIDLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkLagerFord)
@@ -400,7 +418,50 @@ private static InfDB idb;
             JOptionPane.showMessageDialog(null, "Databasfel");
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
     } 
+        cbLagerFord.addItemListener(new ItemListener()
+          {
+               public void itemStateChanged(ItemEvent event)
+               {
+                    if (event.getStateChange() == ItemEvent.SELECTED)
+                    {
+                         try
+                         {
+                             String valdHatt = cbLagerFord.getSelectedItem().toString();
+                              String no = "select Price from article where Article_Name = '"+ valdHatt + "'";
+                              String answer = idb.fetchSingle(no);
+                              tfPris.setText(answer);
+                         }
+                         catch (Exception ex)
+                         {
+                              ex.printStackTrace();
+                         }
+                    }
+               }
         }
+        );
+        cbLagerFord.addItemListener(new ItemListener()
+          {
+               public void itemStateChanged(ItemEvent event)
+               {
+                    if (event.getStateChange() == ItemEvent.SELECTED)
+                    {
+                         try
+                         {
+                             String valdHatt = cbLagerFord.getSelectedItem().toString();
+                              String no = "select ArticleID from article where Article_Name = '"+ valdHatt + "'";
+                              String answer = idb.fetchSingle(no);
+                              tfArtikelIDLagerFord.setText(answer);
+                         }
+                         catch (Exception ex)
+                         {
+                              ex.printStackTrace();
+                         }
+                    }
+               }
+        }
+        );
+                }
+        
     private void fyllcbKundAnpassad(){ //Fylla 
             String fraga = "SELECT Article_Name FROM article where Article_stocked = 1";
           
@@ -433,7 +494,108 @@ private static InfDB idb;
             System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
     } 
         }
-    
+    private void fyllcbKundAnpassadDekoration1() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbKundAnpassadDekoration1.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
+    private void fyllcbKundAnpassadDekoration2() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbKundAnpassadDekoration2.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
+    private void fyllcbKundAnpassadDekoration3() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbKundAnpassadDekoration3.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
+private void fyllcbSpecialAnpassadDekoration1() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbSpecialAnpassadDekoration1.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
+    private void fyllcbSpecialAnpassadDekoration2() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbSpecialAnpassadDekoration2.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
+    private void fyllcbSpecialAnpassadDekoration3() {
+        String fraga = "SELECT Material_Name FROM material where Type = 'Dekoration';";
+
+        ArrayList<String> MatrialDekoration;
+        try {
+            MatrialDekoration = idb.fetchColumn(fraga);
+
+            for (String lagerHatt : MatrialDekoration) {
+                cbSpecialAnpassadDekoration3.addItem(lagerHatt);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+
+    }
     private void tfHuvudMåttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttActionPerformed
         // TODO add your handling code here:
         JTextField huvudMått = tfHuvudMått;
@@ -443,9 +605,9 @@ private static InfDB idb;
         // TODO add your handling code here:
     }//GEN-LAST:event_tfArtikelNummerKundAnpassadActionPerformed
 
-    private void tfArtikelNummerLagerfordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelNummerLagerfordActionPerformed
+    private void tfArtikelIDLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelIDLagerFordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfArtikelNummerLagerfordActionPerformed
+    }//GEN-LAST:event_tfArtikelIDLagerFordActionPerformed
 
     private void tfHuvudMåttSpecialAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttSpecialAnpassadActionPerformed
         // TODO add your handling code here:
@@ -468,6 +630,14 @@ private static InfDB idb;
         JOptionPane.showMessageDialog(null, "");
             System.out.println("Internt felmeddelande");
     }//GEN-LAST:event_buttonLagerFordActionPerformed
+
+    private void cbKundAnpassadDekoration1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKundAnpassadDekoration1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKundAnpassadDekoration1ActionPerformed
+
+    private void tfPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPrisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,9 +681,9 @@ private static InfDB idb;
     private javax.swing.JButton buttonLagerFord;
     private javax.swing.JButton buttonSpecialAnpassad;
     private javax.swing.JComboBox<String> cbHattypKundAnpassad;
+    private javax.swing.JComboBox<String> cbKundAnpassadDekoration1;
     private javax.swing.JComboBox<String> cbKundAnpassadDekoration2;
     private javax.swing.JComboBox<String> cbKundAnpassadDekoration3;
-    private javax.swing.JComboBox<String> cbKundAnpassadDekoration4;
     private javax.swing.JComboBox<String> cbLagerFord;
     private javax.swing.JComboBox<String> cbSpecialAnpassadDekoration1;
     private javax.swing.JComboBox<String> cbSpecialAnpassadDekoration2;
@@ -543,8 +713,8 @@ private static InfDB idb;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField tfArtikelIDLagerFord;
     private javax.swing.JTextField tfArtikelNummerKundAnpassad;
-    private javax.swing.JTextField tfArtikelNummerLagerford;
     private javax.swing.JTextField tfArtikelNummerSpecialAnpassad;
     private javax.swing.JTextField tfHuvudMått;
     private javax.swing.JTextField tfHuvudMåttKundAnpassad;
