@@ -53,7 +53,6 @@ private static InfDB idb;
 
         jLabel3.setText("Välj typ:");
 
-        materialTextField.setText("jTextField1");
         materialTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 materialTextFieldActionPerformed(evt);
