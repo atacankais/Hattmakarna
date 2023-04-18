@@ -54,10 +54,14 @@ private static InfDB idb;
         jScrollPane6 = new javax.swing.JScrollPane();
         statusT = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        orderIDTr = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sök Kundnamn");
+        jLabel1.setText("Sök Kundnamn:");
 
         ValjKund.setText("Sök");
         ValjKund.addActionListener(new java.awt.event.ActionListener() {
@@ -94,25 +98,52 @@ private static InfDB idb;
         statusT.setRows(5);
         jScrollPane6.setViewportView(statusT);
 
-        jLabel7.setText("Ordernummer");
+        jLabel7.setText("OrderID");
+
+        jButton1.setText("Ändra Status ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Ta bort order");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Sök orderID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ValjKund))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jButton1)
+                                .addGap(27, 27, 27))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ValjKund)
+                                    .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(orderIDTr, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(7, 7, 7)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -131,31 +162,43 @@ private static InfDB idb;
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(35, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(ValjKund))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ValjKund)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(orderIDTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(26, 26, 26))))
         );
 
         pack();
@@ -195,8 +238,36 @@ private static InfDB idb;
         for (String thisNumber : number){
             anställningT.append(thisNumber);
             anställningT.append("\n");
-                
+            
         }
+        
+        String showMaterial = "SELECT m.Material_name, e.EmployeeID, a.Article_Name, o.OrderID, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
+        ArrayList<String> material = idb.fetchColumn(showMaterial);
+        
+        for (String thisMaterial : material){
+            materialT.append(thisMaterial);
+            materialT.append("\n");
+        }  
+       
+        String showStatus = "SELECT pr.Status, m.Material_name, e.EmployeeID, a.Article_Name, o.OrderID, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
+        ArrayList<String> status = idb.fetchColumn(showStatus);
+        
+        for (String thisStatus : status){
+            statusT.append(thisStatus);
+            statusT.append("\n");
+                   
+        }
+        
+        String showOrder = "SELECT o.OrderID, pr.Status, m.Material_name, e.EmployeeID, a.Article_Name, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
+        ArrayList<String> order = idb.fetchColumn(showOrder);
+        
+        for (String thisOrdernummer : order){
+            ordernummerT.append(thisOrdernummer);
+            ordernummerT.append("\n");
+            
+        }
+        
+        
         
        // JOptionPane.showMessageDialog(null, "ID: " + id + "\nNamn: " + name + "\nTelefonnummer: " + phonenumber + "\nAdress: " + address + "\nMail: " + mail + "\nHuvudmått: " + head_measurement + " cm" + "");
 
@@ -207,6 +278,33 @@ private static InfDB idb;
            System.out.println("Någonting gick fel");
         }
     }//GEN-LAST:event_ValjKundActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new ÄndraStatusPåOrder().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+         String selectedID = orderIDTr.getText();
+         
+
+        
+        idb.delete("delete from order_contains_of_article where OrderID = " + selectedID);
+        idb.delete("delete from production where OrderID = " + selectedID);
+        idb.delete("delete from `order` where OrderID = " + selectedID);
+      
+         
+         
+         JOptionPane.showMessageDialog(null, "Ordern har raderats");
+
+           
+        
+        
+         
+        } catch(InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,7 +345,10 @@ private static InfDB idb;
     private javax.swing.JButton ValjKund;
     private javax.swing.JTextArea anställningT;
     private javax.swing.JTextArea articleT;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -259,6 +360,7 @@ private static InfDB idb;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea materialT;
+    private javax.swing.JTextField orderIDTr;
     private javax.swing.JTextArea ordernummerT;
     private javax.swing.JTextField sokKundnamnTr;
     private javax.swing.JTextArea statusT;
