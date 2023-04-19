@@ -36,6 +36,8 @@ private static InfDB idb;
           fyllcbSpecialAnpassadDekoration1();
           fyllcbSpecialAnpassadDekoration2();
           fyllcbSpecialAnpassadDekoration3();
+          checkBoxBrodskandeLagerFord();
+          ValjKund();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,8 +52,6 @@ private static InfDB idb;
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         cbLagerFord = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        tfHuvudMått = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tfPris = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -71,23 +71,15 @@ private static InfDB idb;
         tfPrisSpecialAnpassad = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tfArtikelIDLagerFord = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        tfHuvudMåttSpecialAnpassad = new javax.swing.JTextField();
         cbKundAnpassadDekoration1 = new javax.swing.JComboBox<>();
         cbSpecialAnpassadDekoration2 = new javax.swing.JComboBox<>();
         cbSpecialAnpassadDekoration3 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        tfHuvudMåttKundAnpassad = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         tfPrisKundAnpassad1 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        tfArtikelNummerSpecialAnpassad = new javax.swing.JTextField();
         checkLagerFord = new javax.swing.JCheckBox();
-        checkKundAnpassad = new javax.swing.JCheckBox();
-        checkSpecialAnpassad = new javax.swing.JCheckBox();
         buttonLagerFord = new javax.swing.JButton();
         buttonKundAnpassad = new javax.swing.JButton();
         buttonSpecialAnpassad = new javax.swing.JButton();
@@ -97,6 +89,11 @@ private static InfDB idb;
         jLabel20 = new javax.swing.JLabel();
         tfDatum2 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        knappBrodskande = new javax.swing.JButton();
+        knappBrodskandeSpecial = new javax.swing.JButton();
+        checkSpecialAnpassad = new javax.swing.JCheckBox();
+        cbValjKund = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,14 +111,6 @@ private static InfDB idb;
         cbLagerFord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbLagerFordActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Huvudmått");
-
-        tfHuvudMått.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfHuvudMåttActionPerformed(evt);
             }
         });
 
@@ -145,11 +134,16 @@ private static InfDB idb;
 
         jLabel5.setText("Välj lagerförd hatt");
 
-        cbSpecialAnpassadDekoration1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbSpecialAnpassadDekoration1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration" }));
 
-        cbKundAnpassadDekoration2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbKundAnpassadDekoration2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration" }));
+        cbKundAnpassadDekoration2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKundAnpassadDekoration2ActionPerformed(evt);
+            }
+        });
 
-        cbKundAnpassadDekoration3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbKundAnpassadDekoration3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration" }));
 
         jLabel6.setText("Dekoration 1");
 
@@ -169,24 +163,16 @@ private static InfDB idb;
             }
         });
 
-        jLabel12.setText("Huvudmått");
-
-        tfHuvudMåttSpecialAnpassad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfHuvudMåttSpecialAnpassadActionPerformed(evt);
-            }
-        });
-
-        cbKundAnpassadDekoration1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbKundAnpassadDekoration1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration", "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
         cbKundAnpassadDekoration1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbKundAnpassadDekoration1ActionPerformed(evt);
             }
         });
 
-        cbSpecialAnpassadDekoration2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbSpecialAnpassadDekoration2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration" }));
 
-        cbSpecialAnpassadDekoration3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Band", "Strutsfjäder", "Påfågerfjäder", "Hönsfjäder", "Tygblomma", "Pärlor", "Spetts", "Lackeratpapper", "Lurextråd", "Fuskpäls" }));
+        cbSpecialAnpassadDekoration3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj dekoration" }));
 
         jLabel13.setText("Dekoration 1");
 
@@ -194,34 +180,13 @@ private static InfDB idb;
 
         jLabel15.setText("Dekoration 3");
 
-        jLabel16.setText("Huvudmått");
-
-        tfHuvudMåttKundAnpassad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfHuvudMåttKundAnpassadActionPerformed(evt);
-            }
-        });
-
         jLabel17.setText("Pris");
 
-        jLabel18.setText("Artikel ID");
-
-        tfArtikelNummerSpecialAnpassad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfArtikelNummerSpecialAnpassadActionPerformed(evt);
-            }
-        });
-
-        checkLagerFord.setText("Brådskande");
         checkLagerFord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkLagerFordActionPerformed(evt);
             }
         });
-
-        checkKundAnpassad.setText("Brådskande");
-
-        checkSpecialAnpassad.setText("Brådskande");
 
         buttonLagerFord.setText("Lägg till");
         buttonLagerFord.addActionListener(new java.awt.event.ActionListener() {
@@ -245,11 +210,36 @@ private static InfDB idb;
 
         jLabel21.setText("Datum:");
 
+        knappBrodskande.setText("Brådskande");
+        knappBrodskande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                knappBrodskandeActionPerformed(evt);
+            }
+        });
+
+        knappBrodskandeSpecial.setText("Brådskande");
+        knappBrodskandeSpecial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                knappBrodskandeSpecialActionPerformed(evt);
+            }
+        });
+
+        checkSpecialAnpassad.setText("jCheckBox1");
+
+        cbValjKund.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj kund" }));
+        cbValjKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbValjKundActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Välj kund");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -259,72 +249,83 @@ private static InfDB idb;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfPris, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tfArtikelIDLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(checkLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buttonLagerFord)
-                                .addComponent(tfHuvudMått, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(tfDatum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonKundAnpassad)
-                        .addGap(135, 135, 135)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonSpecialAnpassad)
-                            .addComponent(checkSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(140, 140, 140))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                        .addComponent(cbHattypKundAnpassad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbKundAnpassadDekoration1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(tfPris, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfArtikelIDLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buttonLagerFord)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(cbKundAnpassadDekoration3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbKundAnpassadDekoration2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfArtikelNummerKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPrisKundAnpassad1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfHuvudMåttKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDatum1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tfDatum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                                .addGap(71, 71, 71)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonKundAnpassad)
+                        .addGap(135, 135, 135)
+                        .addComponent(buttonSpecialAnpassad)
+                        .addGap(152, 152, 152))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(knappBrodskande)
+                        .addGap(62, 62, 62)
+                        .addComponent(checkSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(knappBrodskandeSpecial)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                                .addComponent(cbHattypKundAnpassad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbKundAnpassadDekoration1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfArtikelNummerKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfDatum1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPrisKundAnpassad1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbKundAnpassadDekoration3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbKundAnpassadDekoration2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfArtikelNummerSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbSpecialAnpassadDekoration2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbSpecialAnpassadTyg, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbSpecialAnpassadDekoration1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbSpecialAnpassadDekoration3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfHuvudMåttSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDatum2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(checkKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(47, 47, 47))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbSpecialAnpassadDekoration2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbSpecialAnpassadTyg, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbSpecialAnpassadDekoration1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbSpecialAnpassadDekoration3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfDatum2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +374,6 @@ private static InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbKundAnpassadDekoration3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbSpecialAnpassadDekoration3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -388,49 +388,50 @@ private static InfDB idb;
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfHuvudMåttKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfHuvudMåttSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfHuvudMått, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel2))
-                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfPrisKundAnpassad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(knappBrodskandeSpecial)
+                                .addComponent(knappBrodskande)
+                                .addComponent(checkSpecialAnpassad))
+                            .addComponent(checkLagerFord))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tfPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel3)))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jLabel3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel1))))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfArtikelNummerKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfArtikelNummerSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tfArtikelNummerKundAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tfArtikelIDLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkLagerFord)
-                    .addComponent(checkKundAnpassad)
-                    .addComponent(checkSpecialAnpassad))
-                .addGap(18, 18, 18)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonLagerFord)
                     .addComponent(buttonKundAnpassad)
                     .addComponent(buttonSpecialAnpassad))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE))
         );
 
         pack();
@@ -680,11 +681,6 @@ private void fyllcbSpecialAnpassadDekoration1() {
     } 
 
     }
-    private void tfHuvudMåttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttActionPerformed
-        // TODO add your handling code here:
-        JTextField huvudMått = tfHuvudMått;
-    }//GEN-LAST:event_tfHuvudMåttActionPerformed
-
     private void tfArtikelNummerKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelNummerKundAnpassadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfArtikelNummerKundAnpassadActionPerformed
@@ -692,18 +688,6 @@ private void fyllcbSpecialAnpassadDekoration1() {
     private void tfArtikelIDLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelIDLagerFordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfArtikelIDLagerFordActionPerformed
-
-    private void tfHuvudMåttSpecialAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttSpecialAnpassadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfHuvudMåttSpecialAnpassadActionPerformed
-
-    private void tfHuvudMåttKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHuvudMåttKundAnpassadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfHuvudMåttKundAnpassadActionPerformed
-
-    private void tfArtikelNummerSpecialAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfArtikelNummerSpecialAnpassadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfArtikelNummerSpecialAnpassadActionPerformed
 
     private void buttonKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKundAnpassadActionPerformed
         // TODO add your handling code here:
@@ -719,17 +703,90 @@ private void fyllcbSpecialAnpassadDekoration1() {
 
     private void tfPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrisActionPerformed
         // TODO add your handling code here:
- 
+
     }//GEN-LAST:event_tfPrisActionPerformed
 
-    private void checkBoxBrodskandeLagerFord (java.awt.event.ItemEvent evt)
+    private void checkBoxBrodskandeLagerFord ()
     {
-        
+                try{
+        String item = cbLagerFord.getSelectedItem().toString();
+        String fraga = "select Price from article where Article_Name = '"+ item +"'";
+        String svar = idb.fetchSingle(fraga);
+        //String pris = tfPris.getText();
+        if(checkLagerFord.isSelected()) {
+            double num = Double.parseDouble(svar);
+            double result = num * 1.2;
+            String num1 = Double.toString(result);
+           tfPris.setText(num1);
+        }
+        } catch (InfException e) {
+        }
     }
     
     private void checkLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkLagerFordActionPerformed
 
     }//GEN-LAST:event_checkLagerFordActionPerformed
+
+    private void knappBrodskandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappBrodskandeActionPerformed
+        // TODO add your handling code here:
+        try{
+        String item = cbHattypKundAnpassad.getSelectedItem().toString();
+        String fraga = "select Price from article where Article_Name = '"+ item +"'";
+        String svar = idb.fetchSingle(fraga);
+        //String pris = tfPris.getText();
+        checkLagerFord.setSelected(rootPaneCheckingEnabled);
+            double num = Double.parseDouble(svar);
+            double result = num * 1.2;
+            String num1 = Double.toString(result);
+           tfPrisKundAnpassad1.setText(num1);
+       
+        } catch (InfException e) {
+        }
+    }//GEN-LAST:event_knappBrodskandeActionPerformed
+
+    private void knappBrodskandeSpecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappBrodskandeSpecialActionPerformed
+        // TODO add your handling code here:
+        try{
+        String item = cbHattypKundAnpassad.getSelectedItem().toString();
+        String fraga = "select Price from article where Article_Name = '"+ item +"'";
+        String svar = idb.fetchSingle(fraga);
+        String pris = tfPrisSpecialAnpassad.getText();
+        checkSpecialAnpassad.setSelected(rootPaneCheckingEnabled);
+            double num = Double.parseDouble(pris);
+            double result = num * 1.2;
+            String num1 = Double.toString(result);
+           tfPrisSpecialAnpassad.setText(num1);
+       
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+        }
+    }//GEN-LAST:event_knappBrodskandeSpecialActionPerformed
+
+    private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
+
+
+    }//GEN-LAST:event_cbValjKundActionPerformed
+
+    private void ValjKund() {
+        String fraga = "SELECT Name FROM customer;";
+
+        ArrayList<String> kundRegister;
+        try {
+            kundRegister = idb.fetchColumn(fraga);
+
+            for (String kund : kundRegister) {
+                cbValjKund.addItem(kund);
+            }
+
+        } catch (InfException ettUndantag) {
+            JOptionPane.showMessageDialog(null, "Databasfel");
+            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    } 
+    }
+    private void cbKundAnpassadDekoration2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKundAnpassadDekoration2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKundAnpassadDekoration2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -781,7 +838,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
     private javax.swing.JComboBox<String> cbSpecialAnpassadDekoration2;
     private javax.swing.JComboBox<String> cbSpecialAnpassadDekoration3;
     private javax.swing.JComboBox<String> cbSpecialAnpassadTyg;
-    private javax.swing.JCheckBox checkKundAnpassad;
+    private javax.swing.JComboBox<String> cbValjKund;
     private javax.swing.JCheckBox checkLagerFord;
     private javax.swing.JCheckBox checkSpecialAnpassad;
     private javax.swing.JButton jButton1;
@@ -790,13 +847,10 @@ private void fyllcbSpecialAnpassadDekoration1() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -808,15 +862,13 @@ private void fyllcbSpecialAnpassadDekoration1() {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton knappBrodskande;
+    private javax.swing.JButton knappBrodskandeSpecial;
     private javax.swing.JTextField tfArtikelIDLagerFord;
     private javax.swing.JTextField tfArtikelNummerKundAnpassad;
-    private javax.swing.JTextField tfArtikelNummerSpecialAnpassad;
     private javax.swing.JTextField tfDatum;
     private javax.swing.JTextField tfDatum1;
     private javax.swing.JTextField tfDatum2;
-    private javax.swing.JTextField tfHuvudMått;
-    private javax.swing.JTextField tfHuvudMåttKundAnpassad;
-    private javax.swing.JTextField tfHuvudMåttSpecialAnpassad;
     private javax.swing.JTextField tfPris;
     private javax.swing.JTextField tfPrisKundAnpassad1;
     private javax.swing.JTextField tfPrisSpecialAnpassad;
