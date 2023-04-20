@@ -94,7 +94,8 @@ private static InfDB idb;
         checkSpecialAnpassad = new javax.swing.JCheckBox();
         cbValjKund = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        BtnRegKund = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,7 +237,19 @@ private static InfDB idb;
 
         jLabel1.setText("Välj kund");
 
-        jLabel12.setText("jLabel12");
+        BtnRegKund.setText("Registrera Kund");
+        BtnRegKund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegKundActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Tillbaka");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,7 +284,9 @@ private static InfDB idb;
                         .addComponent(buttonKundAnpassad)
                         .addGap(135, 135, 135)
                         .addComponent(buttonSpecialAnpassad)
-                        .addGap(152, 152, 152))
+                        .addGap(71, 71, 71)
+                        .addComponent(BtnRegKund)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(checkLagerFord, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -325,21 +340,21 @@ private static InfDB idb;
                                             .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 36, 36))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jButton4)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -439,7 +454,9 @@ private static InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonLagerFord)
                     .addComponent(buttonKundAnpassad)
-                    .addComponent(buttonSpecialAnpassad))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonSpecialAnpassad)
+                        .addComponent(BtnRegKund)))
                 .addGap(18, 18, Short.MAX_VALUE))
         );
 
@@ -797,6 +814,14 @@ private void fyllcbSpecialAnpassadDekoration1() {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbKundAnpassadDekoration2ActionPerformed
 
+    private void BtnRegKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegKundActionPerformed
+        new RegistreraKund().setVisible(true);
+    }//GEN-LAST:event_BtnRegKundActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -835,6 +860,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegKund;
     private javax.swing.JButton buttonKundAnpassad;
     private javax.swing.JButton buttonLagerFord;
     private javax.swing.JButton buttonSpecialAnpassad;
@@ -853,10 +879,10 @@ private void fyllcbSpecialAnpassadDekoration1() {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
