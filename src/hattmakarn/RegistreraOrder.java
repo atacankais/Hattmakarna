@@ -337,7 +337,9 @@ private static InfDB idb;
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfArtikelNamnSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfArtikelNamnSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(61, 61, 61)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbValjKund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,11 +362,8 @@ private static InfDB idb;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(checkSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(knappBrodskandeSpecial)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(knappBrodskandeSpecial)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(buttonSpecialAnpassad)
                                 .addGap(71, 71, 71)
@@ -716,9 +715,17 @@ private void fyllcbSpecialAnpassadDekoration1() {
         String artikelNamnKundAnpassad = tfArtikelNamnKundAnpassad.getText();
        String datumKundAnpassad = tfDatum1.getText();
        String prisKundAnpassad = tfPrisKundAnpassad1.getText();
+       String dekorationKundAnpassad1 = cbKundAnpassadDekoration1.getSelectedItem().toString();
+       String dekorationKundAnpassad2 = cbKundAnpassadDekoration2.getSelectedItem().toString();
+       String dekorationKundAnpassad3 = cbKundAnpassadDekoration3.getSelectedItem().toString();
+       String kundRegister = cbValjKund.getSelectedItem().toString();
+       orderRegister.add(kundRegister);
         orderRegister.add(artikelNamnKundAnpassad);
        orderRegister.add(datumKundAnpassad);
        orderRegister.add(prisKundAnpassad);
+       orderRegister.add(dekorationKundAnpassad1);
+       orderRegister.add(dekorationKundAnpassad2);
+       orderRegister.add(dekorationKundAnpassad3);
        System.out.println(orderRegister);
     }//GEN-LAST:event_buttonKundAnpassadActionPerformed
 
@@ -726,6 +733,8 @@ private void fyllcbSpecialAnpassadDekoration1() {
 ArrayList<String> orderRegister = new ArrayList<>();
         String datumLagerFord = tfDatum.getText();
        String prisLagerFord = tfPris.getText();
+       String kundRegister = cbValjKund.getSelectedItem().toString();
+       orderRegister.add(kundRegister);
        orderRegister.add(datumLagerFord);
        orderRegister.add(prisLagerFord);
        System.out.println(orderRegister);
@@ -834,9 +843,18 @@ ArrayList<String> orderRegister = new ArrayList<>();
        String artikelNamnKundAnpassad = tfArtikelNamnKundAnpassad.getText();
        String datumKundAnpassad = tfDatum1.getText();
        String prisKundAnpassad = tfPrisKundAnpassad1.getText();
+       String dekorationKundAnpassad1 = cbKundAnpassadDekoration1.getSelectedItem().toString();
+       String dekorationKundAnpassad2 = cbKundAnpassadDekoration2.getSelectedItem().toString();
+       String dekorationKundAnpassad3 = cbKundAnpassadDekoration3.getSelectedItem().toString();
+       String dekorationSpecialAnpassad1 = cbSpecialAnpassadDekoration1.getSelectedItem().toString();
+       String dekorationSpecialAnpassad2 = cbSpecialAnpassadDekoration2.getSelectedItem().toString();
+       String dekorationSpecialAnpassad3 = cbSpecialAnpassadDekoration3.getSelectedItem().toString();
+               
        String datumSpecialAnpassad = tfDatum2.getText();
        String prisSpecialAnpassad = tfPrisSpecialAnpassad.getText();
        String artikelNamnSpecialAnpassad = tfArtikelNamnSpecialAnpassad.getText();
+       String kundRegister = cbValjKund.getSelectedItem().toString();
+       orderRegister.add(kundRegister);
        orderRegister.add(datumLagerFord);
        orderRegister.add(prisLagerFord);
        orderRegister.add(artikelNamnKundAnpassad);
@@ -845,9 +863,12 @@ ArrayList<String> orderRegister = new ArrayList<>();
        orderRegister.add(datumSpecialAnpassad);
        orderRegister.add(prisSpecialAnpassad);
        orderRegister.add(artikelNamnSpecialAnpassad);
-       
-       System.out.println(orderRegister);
-       
+       orderRegister.add(dekorationKundAnpassad1);
+       orderRegister.add(dekorationKundAnpassad2);
+       orderRegister.add(dekorationKundAnpassad3);
+       orderRegister.add(dekorationSpecialAnpassad1);
+       orderRegister.add(dekorationSpecialAnpassad2);
+       orderRegister.add(dekorationSpecialAnpassad3);
     }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -859,9 +880,17 @@ ArrayList<String> orderRegister = new ArrayList<>();
         String datumSpecialAnpassad = tfDatum2.getText();
        String prisSpecialAnpassad = tfPrisSpecialAnpassad.getText();
        String artikelNamnSpecialAnpassad = tfArtikelNamnSpecialAnpassad.getText();
+       String dekorationSpecialAnpassad1 = cbSpecialAnpassadDekoration1.getSelectedItem().toString();
+       String dekorationSpecialAnpassad2 = cbSpecialAnpassadDekoration2.getSelectedItem().toString();
+       String dekorationSpecialAnpassad3 = cbSpecialAnpassadDekoration3.getSelectedItem().toString();
+       String kundRegister = cbValjKund.getSelectedItem().toString();
+       orderRegister.add(kundRegister);
        orderRegister.add(datumSpecialAnpassad);
        orderRegister.add(prisSpecialAnpassad);
        orderRegister.add(artikelNamnSpecialAnpassad);
+       orderRegister.add(dekorationSpecialAnpassad1);
+       orderRegister.add(dekorationSpecialAnpassad2);
+       orderRegister.add(dekorationSpecialAnpassad3);
        System.out.println(orderRegister);
     }//GEN-LAST:event_buttonSpecialAnpassadActionPerformed
 
