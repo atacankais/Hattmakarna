@@ -24,70 +24,46 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="cbLagerFord" pref="116" max="32767" attributes="0"/>
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfPris" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
-                                  <Component id="tfArtikelIDLagerFord" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="buttonLagerFord" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="tfDatum" alignment="0" pref="71" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tfPris" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                          <Component id="tfArtikelIDLagerFord" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="buttonLagerFord" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfDatum" alignment="0" pref="71" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" pref="110" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cbLagerFord" pref="116" max="32767" attributes="0"/>
+                              <Component id="jButton1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="buttonKundAnpassad" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="buttonSpecialAnpassad" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="BtnRegKund" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="checkLagerFord" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="knappBrodskande" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="checkSpecialAnpassad" min="-2" pref="21" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="knappBrodskandeSpecial" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton2" pref="139" max="32767" attributes="0"/>
                               <Component id="cbHattypKundAnpassad" max="32767" attributes="0"/>
                               <Component id="jLabel5" max="32767" attributes="0"/>
-                              <Component id="cbKundAnpassadDekoration1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabel6" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
-                          <Component id="tfArtikelNummerKundAnpassad" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                          <Component id="tfDatum1" min="-2" pref="72" max="-2" attributes="0"/>
-                          <Component id="tfPrisKundAnpassad1" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="tfArtikelNamnKundAnpassad" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="cbKundAnpassadDekoration3" alignment="0" max="32767" attributes="0"/>
                               <Component id="cbKundAnpassadDekoration2" alignment="0" max="32767" attributes="0"/>
@@ -95,12 +71,17 @@
                               <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="cbKundAnpassadDekoration1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel6" alignment="0" pref="117" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tfDatum1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfPrisKundAnpassad1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel10" alignment="0" pref="104" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -119,9 +100,11 @@
                                           <Component id="cbSpecialAnpassadDekoration3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel14" min="-2" pref="117" max="-2" attributes="0"/>
                                           <Component id="jLabel15" min="-2" pref="117" max="-2" attributes="0"/>
-                                          <Component id="tfDatum2" min="-2" pref="72" max="-2" attributes="0"/>
-                                          <Component id="tfPrisSpecialAnpassad" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Component id="jLabel17" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="tfPrisSpecialAnpassad" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tfDatum2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel17" alignment="0" pref="104" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -129,10 +112,52 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="cbValjKund" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfArtikelNamnSpecialAnpassad" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbValjKund" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" pref="54" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="buttonKundAnpassad" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="checkLagerFord" min="-2" pref="23" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="knappBrodskande" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="checkSpecialAnpassad" min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="knappBrodskandeSpecial" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel12" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="buttonSpecialAnpassad" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="BtnRegKund" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -223,54 +248,40 @@
                       <Component id="tfDatum" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfPrisKundAnpassad1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfPrisSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="knappBrodskandeSpecial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="knappBrodskande" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="checkSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="checkLagerFord" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="tfPrisKundAnpassad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPrisSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPris" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="knappBrodskandeSpecial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="knappBrodskande" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkLagerFord" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="tfPris" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfArtikelNummerKundAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfArtikelNamnKundAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbValjKund" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfArtikelNamnSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="tfArtikelIDLagerFord" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -335,9 +346,9 @@
         <Property name="text" type="java.lang.String" value="Artikel ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfArtikelNummerKundAnpassad">
+    <Component class="javax.swing.JTextField" name="tfArtikelNamnKundAnpassad">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfArtikelNummerKundAnpassadActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfArtikelNamnKundAnpassadActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbHattypKundAnpassad">
@@ -438,7 +449,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Artikel ID"/>
+        <Property name="text" type="java.lang.String" value="Artikelnamn"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfArtikelIDLagerFord">
@@ -542,6 +553,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSpecialAnpassadActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfDatum">
     </Component>
@@ -620,6 +634,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arikelnamn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfArtikelNamnSpecialAnpassad">
     </Component>
   </SubComponents>
 </Form>
