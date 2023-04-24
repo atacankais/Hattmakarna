@@ -19,12 +19,12 @@ private static InfDB idb;
      */
     public SokArtikel() {
         initComponents();
-        fyllBoxMedArtikelnamn();
         try{
             idb = new InfDB("hattdb", "3306", "hattdba", "hattkey");
         }catch (InfException ex){
             
         }
+         fyllBoxMedArtikelnamn();
     }
     
     
@@ -59,8 +59,6 @@ private static InfDB idb;
         jLabel2 = new javax.swing.JLabel();
         sokArtikelBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,32 +74,28 @@ private static InfDB idb;
         });
 
         jButton1.setText("Välj artikel");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(sokArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)))))
+                        .addComponent(sokArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
                 .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
@@ -114,9 +108,7 @@ private static InfDB idb;
                     .addComponent(jLabel2)
                     .addComponent(sokArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +117,63 @@ private static InfDB idb;
     private void sokArtikelBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokArtikelBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sokArtikelBoxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try{
+            
+        
+        
+        String articleName = sokArtikelBox.getSelectedItem().toString();
+        String articleID = idb.fetchSingle( "Select ArticleID from article where Article_Name = '" + articleName + "'");
+        String name = idb.fetchSingle( "Select Article_Name from article where Article_Name = '" + articleName + "'");
+        String price = idb.fetchSingle( "Select Price from article where Article_Name = '" + articleName + "'");
+        String articleStocked = idb.fetchSingle( "Select Article_stocked from article where Article_Name = '" + articleName + "'");
+        
+       JOptionPane.showMessageDialog(null, "ID: " + articleID + "\nArtikelnamn: " + name + "\nPris: " + price + "\nLagerförd artikel: " + articleStocked + "" );
+        
+
+
+
+
+
+//ArrayList<String> articles = idb.fetchColumn(showArticleID);
+        
+//        for(String thisArticle : articles){
+//            articleT.append(thisArticle);
+//            articleT.append(" \n");
+//        }
+//            
+//            
+//         
+//        String showArticleName = "Select Article_Name, ArticleID, Price, Article_stocked from article where Article_Name = '" + articleName + "'";
+//        ArrayList<String> name = idb.fetchColumn(showArticleName);
+//        
+//        for(String thisName : name){
+//            articleT.append(thisName);
+//            articleT.append(" \n");
+            
+        
+            
+//            String articleName = sokArtikelBox.getSelectedItem().toString();
+//        String showArticle = "Select ArticleID, Article_Name, Price, Article_stocked from article where Article_Name = '" + articleName + "'";
+//        ArrayList<String> articles = idb.fetchColumn(showArticle);
+//        
+//        for(String thisArticle : articles){
+//            articleT.append(thisArticle);
+//            articleT.append(" \n");
+//            
+            
+            
+            
+            
+        
+        
+        }catch(InfException a){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,8 +214,6 @@ private static InfDB idb;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> sokArtikelBox;
     // End of variables declaration//GEN-END:variables
 }
