@@ -61,6 +61,11 @@ private static InfDB idb;
         });
 
         typeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bas", "Dekoration" }));
+        typeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeBoxActionPerformed(evt);
+            }
+        });
 
         registreraMaterialButton.setText("Registrera");
         registreraMaterialButton.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +157,10 @@ private static InfDB idb;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void typeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeBoxActionPerformed
 
     /**
      * @param args the command line arguments
