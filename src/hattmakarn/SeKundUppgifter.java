@@ -36,14 +36,20 @@ private static InfDB idb;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        sokKundnamnTr = new javax.swing.JTextField();
+        sokTelefonNrTr = new javax.swing.JTextField();
         valjKund = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sök kundnamn:");
+        jLabel1.setText("Sök telefonnummer");
+
+        sokTelefonNrTr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sokTelefonNrTrActionPerformed(evt);
+            }
+        });
 
         valjKund.setText("OK");
         valjKund.addActionListener(new java.awt.event.ActionListener() {
@@ -68,18 +74,18 @@ private static InfDB idb;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(valjKund)
-                            .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sokTelefonNrTr, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
                         .addGap(36, 36, 36)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +97,7 @@ private static InfDB idb;
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(sokKundnamnTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sokTelefonNrTr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(valjKund)
                 .addContainerGap(180, Short.MAX_VALUE))
@@ -102,13 +108,13 @@ private static InfDB idb;
 
     private void valjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valjKundActionPerformed
         try {
-        var saveCustomerName = sokKundnamnTr.getText();
-        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where Name = '" + saveCustomerName + "'"); 
-        String name = idb.fetchSingle("SELECT Name FROM Customer where Name = '" + saveCustomerName + "'");
-        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var address = idb.fetchSingle("SELECT Address FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var mail = idb.fetchSingle("SELECT Mail FROM Customer where Name = '" + saveCustomerName + "'"); 
-        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Name = '" + saveCustomerName + "'"); 
+        var saveCustomerName = sokTelefonNrTr.getText();
+        var id = idb.fetchSingle("SELECT CustomerID FROM Customer where Phone = '" + saveCustomerName + "'"); 
+        String name = idb.fetchSingle("SELECT Name FROM Customer where Phone = '" + saveCustomerName + "'");
+        var phonenumber = idb.fetchSingle("SELECT Phone FROM Customer where Phone = '" + saveCustomerName + "'"); 
+        var address = idb.fetchSingle("SELECT Address FROM Customer where Phone = '" + saveCustomerName + "'"); 
+        var mail = idb.fetchSingle("SELECT Mail FROM Customer where Phone = '" + saveCustomerName + "'"); 
+        var head_measurement = idb.fetchSingle("SELECT Head_measurement FROM Customer where Phone = '" + saveCustomerName + "'"); 
 
 
         JOptionPane.showMessageDialog(null, "ID: " + id + "\nNamn: " + name + "\nTelefonnummer: " + phonenumber + "\nAdress: " + address + "\nMail: " + mail + "\nHuvudmått: " + head_measurement + " cm" + "");
@@ -129,6 +135,10 @@ private static InfDB idb;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sokTelefonNrTrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokTelefonNrTrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sokTelefonNrTrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,7 +179,7 @@ private static InfDB idb;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField sokKundnamnTr;
+    private javax.swing.JTextField sokTelefonNrTr;
     private javax.swing.JButton valjKund;
     // End of variables declaration//GEN-END:variables
 }
