@@ -59,13 +59,12 @@ private static InfDB idb;
         valjArtikelBox = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         prisRubrik = new javax.swing.JLabel();
-        lagerfordRubrik = new javax.swing.JLabel();
         prisTf = new javax.swing.JTextField();
-        lagerfordBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        namnRubrik.setText("Namn");
+        namnRubrik.setText("Namn:");
 
         jLabel2.setText("Välj artikel");
 
@@ -76,11 +75,10 @@ private static InfDB idb;
             }
         });
 
-        prisRubrik.setText("Pris");
+        prisRubrik.setText("Pris:");
 
-        lagerfordRubrik.setText("Lageförd artikel");
-
-        lagerfordBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "True", "False" }));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Redigera artikel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,49 +90,45 @@ private static InfDB idb;
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(namnRubrik)
-                    .addComponent(lagerfordRubrik)
-                    .addComponent(prisRubrik))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(namnTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(valjArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(54, 194, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(prisTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(prisRubrik)
+                            .addComponent(namnRubrik))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namnTf)
+                            .addComponent(prisTf)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lagerfordBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(valjArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jLabel1)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(valjArtikelBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namnTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(namnTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(prisRubrik)
+                            .addComponent(prisTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1))
                     .addComponent(namnRubrik))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prisRubrik)
-                    .addComponent(prisTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lagerfordRubrik)
-                    .addComponent(lagerfordBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
 
@@ -146,26 +140,23 @@ private static InfDB idb;
         String artikelNamn = valjArtikelBox.getSelectedItem().toString();
         String namn = namnTf.getText();
         String pris = prisTf.getText();
-        String lagerford = lagerfordBox.getSelectedItem().toString();
+        int prisInt = Integer.parseInt(pris);
+        //String lagerford = lagerfordBox.getSelectedItem().toString();
         
         //String nyttArtikelnamn = namn;
         idb.update("Update article set Article_Name = '" + namn + "' where Article_Name = '" + artikelNamn + "'");
         namnRubrik.setText("Ny ändring har gjorts");
       
         //String nyttPris = pris;
-        idb.update("Update article set Price = '" + pris + "' where Article_Name = '" + artikelNamn +  "'");
+        idb.update("Update article set Price = '" + prisInt + "' where Article_Name = '" + artikelNamn +  "'");
         prisRubrik.setText("Ny ändring har gjorts");
+        System.out.print(prisInt);
         
         //String andraStatus = lagerford;
 //        idb.update("Update article set Article_stocked = '"+ lagerford + "' where Article_Name = '"  + artikelNamn +  "'");
 //        lagerfordRubrik.setText("Ny ändring har gjorts");
 //        
-//        if(lagerford.equals("'True'")){
-//        idb.update("Update article set Article_stocked values (1)");
-//      }
-//        else if (lagerford.equals("'False'")){
-//          idb.update("Update article set Article_stocked values (0)");
-//      }
+//      
 //        
 //        String sql = "Insert into Article " + " values(" + nyttArtikelnamn + "," + nyttPris + "," + andraStatus + ");";
 //        idb.insert(sql);
@@ -213,9 +204,8 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JComboBox<String> lagerfordBox;
-    private javax.swing.JLabel lagerfordRubrik;
     private javax.swing.JLabel namnRubrik;
     private javax.swing.JTextField namnTf;
     private javax.swing.JLabel prisRubrik;
