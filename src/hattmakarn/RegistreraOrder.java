@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import hattmakarn.orderRegister;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author theod
@@ -364,7 +366,7 @@ private static InfDB idb;
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(knappBrodskandeSpecial))
                                             .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 147, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -379,7 +381,7 @@ private static InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4)
                     .addComponent(BtnRegKund))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(634, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,11 +455,12 @@ private static InfDB idb;
                     .addComponent(tfPrisKundAnpassad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPrisSpecialAnpassad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(knappBrodskande)
-                    .addComponent(knappBrodskandeSpecial)
-                    .addComponent(checkSpecialAnpassad)
-                    .addComponent(checkLagerFord))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkLagerFord, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(knappBrodskande)
+                        .addComponent(knappBrodskandeSpecial)
+                        .addComponent(checkSpecialAnpassad)))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -736,7 +739,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
     }//GEN-LAST:event_tfArtikelIDLagerFordActionPerformed
 
     private void buttonKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKundAnpassadActionPerformed
-     
+     try{
         String artikelNamnKundAnpassad = tfArtikelNamnKundAnpassad.getText();
        String datumKundAnpassad = tfDatum1.getText();
        String prisKundAnpassad = tfPrisKundAnpassad1.getText();
@@ -744,7 +747,35 @@ private void fyllcbSpecialAnpassadDekoration1() {
        String dekorationKundAnpassad2 = cbKundAnpassadDekoration2.getSelectedItem().toString();
        String dekorationKundAnpassad3 = cbKundAnpassadDekoration3.getSelectedItem().toString();
        String kundRegister = cbValjKund.getSelectedItem().toString();
+       String creator = cbAnställningsnummer.getSelectedItem().toString();
        
+       
+       String creatorID = "select EmployeeID from Employee where name = '" + creator + "'";
+       String getCreatorID = idb.fetchSingle(creatorID);
+       String custID = "select CustomerID from Customer where name = '" + kundRegister + "'";
+       String getCustID = idb.fetchSingle(custID);
+       String artID = "select articleID from article where article_name = '" + artikelNamnKundAnpassad + "'";
+       String getArtID = idb.fetchSingle(artID);
+       
+       String insertarticle = "insert into Article (Article_name, price) values ('" + artikelNamnKundAnpassad + "'," + prisKundAnpassad + ")";
+    idb.insert(insertarticle);
+    
+     String lastAID = "select max(ArticleID) from article";
+      String getLastAID = idb.fetchSingle(lastAID);
+    
+    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad1 + "')";
+    idb.insert(insertarticle_contains_of_material1);
+    
+    String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad2 + "')";
+    idb.insert(insertarticle_contains_of_material2);
+    
+    String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad3 + "')";
+    idb.insert(insertarticle_contains_of_material3);
+    
+    
+       
+     } catch(InfException ex){
+        System.out.println(ex.getMessage());}
     }//GEN-LAST:event_buttonKundAnpassadActionPerformed
 
     private void buttonLagerFordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLagerFordActionPerformed
