@@ -157,9 +157,16 @@ private static InfDB idb;
         prisRubrik.setText("Ny ändring har gjorts");
         
         //String andraStatus = lagerford;
-        idb.update("Update article set Article_stocked = '"+ lagerford + "' where Article_Name = '"  + artikelNamn +  "'");
-        lagerfordRubrik.setText("Ny ändring har gjorts");
-        
+//        idb.update("Update article set Article_stocked = '"+ lagerford + "' where Article_Name = '"  + artikelNamn +  "'");
+//        lagerfordRubrik.setText("Ny ändring har gjorts");
+//        
+//        if(lagerford.equals("'True'")){
+//        idb.update("Update article set Article_stocked values (1)");
+//      }
+//        else if (lagerford.equals("'False'")){
+//          idb.update("Update article set Article_stocked values (0)");
+//      }
+//        
 //        String sql = "Insert into Article " + " values(" + nyttArtikelnamn + "," + nyttPris + "," + andraStatus + ");";
 //        idb.insert(sql);
         
