@@ -246,23 +246,12 @@
                   <Component id="tfPrisKundAnpassad1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tfPrisSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="knappBrodskande" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="knappBrodskandeSpecial" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="checkSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="checkLagerFord" alignment="1" min="-2" max="-2" attributes="0"/>
-
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="checkLagerFord" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="knappBrodskandeSpecial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="knappBrodskande" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="checkSpecialAnpassad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
