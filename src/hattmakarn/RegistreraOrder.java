@@ -143,6 +143,12 @@ private static InfDB idb;
             }
         });
 
+        cbHattypKundAnpassad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbHattypKundAnpassadActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Välj lagerförd hatt");
 
         jLabel5.setText("Välj lagerförd hatt");
@@ -381,7 +387,7 @@ private static InfDB idb;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4)
                     .addComponent(BtnRegKund))
-                .addContainerGap(634, Short.MAX_VALUE))
+                .addContainerGap(648, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -756,21 +762,41 @@ private void fyllcbSpecialAnpassadDekoration1() {
        String getCustID = idb.fetchSingle(custID);
        String artID = "select articleID from article where article_name = '" + artikelNamnKundAnpassad + "'";
        String getArtID = idb.fetchSingle(artID);
+       String materialID1 = "select materialID from material where material_name = '" + dekorationKundAnpassad1 + "'";
+       String getmaterialID1 = idb.fetchSingle(materialID1);
+       String materialID2 = "select materialID from material where material_name = '" + dekorationKundAnpassad2 + "'";
+       String getmaterialID2 = idb.fetchSingle(materialID2);
+       String materialID3 = "select materialID from material where material_name = '" + dekorationKundAnpassad3 + "'";
+       String getmaterialID3 = idb.fetchSingle(materialID3);
        
-       String insertarticle = "insert into Article (Article_name, price) values ('" + artikelNamnKundAnpassad + "'," + prisKundAnpassad + ")";
+       String insertarticle = "insert into Article (Article_name, price, article_stocked) values ('" + artikelNamnKundAnpassad + "'," + prisKundAnpassad + "," + false + ")";
     idb.insert(insertarticle);
     
      String lastAID = "select max(ArticleID) from article";
       String getLastAID = idb.fetchSingle(lastAID);
     
-    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad1 + "')";
+    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "')";
     idb.insert(insertarticle_contains_of_material1);
     
-    String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad2 + "')";
-    idb.insert(insertarticle_contains_of_material2);
+    //String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID2 + "')";
+   // idb.insert(insertarticle_contains_of_material2);
     
-    String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + dekorationKundAnpassad3 + "')";
-    idb.insert(insertarticle_contains_of_material3);
+    //String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID3 + "')";
+   // idb.insert(insertarticle_contains_of_material3);
+   
+    String insertOrder = "insert into `Order` (Datum, EmployeeID, CustomerID) values ('" + datumKundAnpassad + "'," + getCreatorID + "," + getCustID + ")";
+    idb.insert(insertOrder);
+       
+      String lastID = "select max(orderID) from `Order`";
+      String getLastID = idb.fetchSingle(lastID);
+       
+     String insertOrderArticle = "insert into order_contains_of_article values (" + getLastID + "," + getLastAID + ")";
+       
+      idb.insert(insertOrderArticle);
+      
+      String insertProduction = "insert into production (Status, ArticleID, OrderID) values ('Lagd'," + getLastAID + "," + getLastID + ")";
+    idb.insert(insertProduction);
+      
     
     
        
@@ -913,15 +939,68 @@ private void fyllcbSpecialAnpassadDekoration1() {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void buttonSpecialAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSpecialAnpassadActionPerformed
-       
+       try{
         String datumSpecialAnpassad = tfDatum2.getText();
        String prisSpecialAnpassad = tfPrisSpecialAnpassad.getText();
        String artikelNamnSpecialAnpassad = tfArtikelNamnSpecialAnpassad.getText();
+       String specialAnpassadTyg = cbSpecialAnpassadTyg.getSelectedItem().toString();
        String dekorationSpecialAnpassad1 = cbSpecialAnpassadDekoration1.getSelectedItem().toString();
        String dekorationSpecialAnpassad2 = cbSpecialAnpassadDekoration2.getSelectedItem().toString();
        String dekorationSpecialAnpassad3 = cbSpecialAnpassadDekoration3.getSelectedItem().toString();
        String kundRegister = cbValjKund.getSelectedItem().toString();
+       String creator = cbAnställningsnummer.getSelectedItem().toString();
        
+       String creatorID = "select EmployeeID from Employee where name = '" + creator + "'";
+       String getCreatorID = idb.fetchSingle(creatorID);
+       String custID = "select CustomerID from Customer where name = '" + kundRegister + "'";
+       String getCustID = idb.fetchSingle(custID);
+       String artID = "select articleID from article where article_name = '" + artikelNamnSpecialAnpassad + "'";
+       String getArtID = idb.fetchSingle(artID);
+       String tygID = "select materialID from material where material_name = '" + specialAnpassadTyg + "'";
+       String getTygID = idb.fetchSingle(tygID);
+       String materialID1 = "select materialID from material where material_name = '" + dekorationSpecialAnpassad1 + "'";
+       String getmaterialID1 = idb.fetchSingle(materialID1);
+       String materialID2 = "select materialID from material where material_name = '" + dekorationSpecialAnpassad2 + "'";
+       String getmaterialID2 = idb.fetchSingle(materialID2);
+       String materialID3 = "select materialID from material where material_name = '" + dekorationSpecialAnpassad3 + "'";
+       String getmaterialID3 = idb.fetchSingle(materialID3);
+       
+       String insertarticle = "insert into Article (Article_name, price, article_stocked) values ('" + artikelNamnSpecialAnpassad + "'," + prisSpecialAnpassad + "," + false + ")";
+    idb.insert(insertarticle);
+    
+     String lastAID = "select max(ArticleID) from article";
+      String getLastAID = idb.fetchSingle(lastAID);
+      
+       String insertarticle_contains_of_material0 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getTygID + "')";
+    idb.insert(insertarticle_contains_of_material0);
+    
+   // String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "')";
+    //idb.insert(insertarticle_contains_of_material1);
+    
+    //String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID2 + "')";
+   // idb.insert(insertarticle_contains_of_material2);
+    
+    //String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID3 + "')";
+   // idb.insert(insertarticle_contains_of_material3);
+   
+    String insertOrder = "insert into `Order` (Datum, EmployeeID, CustomerID) values ('" + datumSpecialAnpassad + "'," + getCreatorID + "," + getCustID + ")";
+    idb.insert(insertOrder);
+       
+      String lastID = "select max(orderID) from `Order`";
+      String getLastID = idb.fetchSingle(lastID);
+       
+     String insertOrderArticle = "insert into order_contains_of_article values (" + getLastID + "," + getLastAID + ")";
+       
+      idb.insert(insertOrderArticle);
+      
+      String insertProduction = "insert into production (Status, ArticleID, OrderID) values ('Lagd'," + getLastAID + "," + getLastID + ")";
+    idb.insert(insertProduction);
+      
+    
+    
+       
+     } catch(InfException ex){
+        System.out.println(ex.getMessage());}
     }//GEN-LAST:event_buttonSpecialAnpassadActionPerformed
 
     private void cbAnställningsnummerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAnställningsnummerActionPerformed
@@ -930,6 +1009,10 @@ private void fyllcbSpecialAnpassadDekoration1() {
     
 
     }//GEN-LAST:event_cbAnställningsnummerActionPerformed
+
+    private void cbHattypKundAnpassadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHattypKundAnpassadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbHattypKundAnpassadActionPerformed
 
     /**
      * @param args the command line arguments

@@ -154,7 +154,7 @@
                   <Component id="jButton4" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="BtnRegKund" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="634" max="32767" attributes="0"/>
+              <EmptySpace pref="648" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -348,6 +348,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbHattypKundAnpassadActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
