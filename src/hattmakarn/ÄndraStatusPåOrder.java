@@ -218,9 +218,10 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnVisaOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVisaOrderActionPerformed
-        
+    
        
         try {
+           TaNamn.setText(null);
            String showName = "SELECT c.Name, o.Datum, p.ProductionID, a.Article_Name, p.Status FROM Customer c JOIN `Order` o ON c.CustomerID = o.CustomerID JOIN Production p ON o.OrderID = p.OrderID JOIN Article a ON p.ArticleID = a.ArticleID JOIN Order_Contains_Of_Article oca ON o.OrderID = oca.OrderID AND a.ArticleID = oca.ArticleID;";
            ArrayList<String> names = idb.fetchColumn(showName);
            
@@ -229,7 +230,7 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
                 TaNamn.append("\n");
 
         }
-           
+           TaDatum.setText(null);
            String showDate = "SELECT o.Datum, c.Name, p.ProductionID, a.Article_Name, p.Status FROM Customer c JOIN `Order` o ON c.CustomerID = o.CustomerID JOIN Production p ON o.OrderID = p.OrderID JOIN Article a ON p.ArticleID = a.ArticleID JOIN Order_Contains_Of_Article oca ON o.OrderID = oca.OrderID AND a.ArticleID = oca.ArticleID;";
            ArrayList<String> dates = idb.fetchColumn(showDate);
            
@@ -238,7 +239,7 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
                 TaDatum.append("\n");
 
         }
-           
+           TaProd.setText(null);
            String showProd = "SELECT p.ProductionID, o.Datum, c.Name, a.Article_Name, p.Status FROM Customer c JOIN `Order` o ON c.CustomerID = o.CustomerID JOIN Production p ON o.OrderID = p.OrderID JOIN Article a ON p.ArticleID = a.ArticleID JOIN Order_Contains_Of_Article oca ON o.OrderID = oca.OrderID AND a.ArticleID = oca.ArticleID;";
            ArrayList<String> prod = idb.fetchColumn(showProd);
            
@@ -247,7 +248,7 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
                 TaProd.append("\n");
 
         }
-           
+           TaArtikel.setText(null);
            String showArticle = "SELECT a.Article_Name, p.ProductionID, o.Datum, c.Name, p.Status FROM Customer c JOIN `Order` o ON c.CustomerID = o.CustomerID JOIN Production p ON o.OrderID = p.OrderID JOIN Article a ON p.ArticleID = a.ArticleID JOIN Order_Contains_Of_Article oca ON o.OrderID = oca.OrderID AND a.ArticleID = oca.ArticleID;";
            ArrayList<String> article = idb.fetchColumn(showArticle);
            
@@ -256,6 +257,7 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
                 TaArtikel.append("\n");
 
         }
+           TaStatus.setText(null);
            String showStatus = "SELECT p.Status, a.Article_Name, p.ProductionID, o.Datum, c.Name FROM Customer c JOIN `Order` o ON c.CustomerID = o.CustomerID JOIN Production p ON o.OrderID = p.OrderID JOIN Article a ON p.ArticleID = a.ArticleID JOIN Order_Contains_Of_Article oca ON o.OrderID = oca.OrderID AND a.ArticleID = oca.ArticleID;";
            ArrayList<String> status = idb.fetchColumn(showStatus);
            
