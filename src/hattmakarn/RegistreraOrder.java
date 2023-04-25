@@ -775,7 +775,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
      String lastAID = "select max(ArticleID) from article";
       String getLastAID = idb.fetchSingle(lastAID);
     
-    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "')";
+    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "'),(" + getLastAID + ",'" + getmaterialID2 + "'),(" + getLastAID + ",'" + getmaterialID3 + "')";
     idb.insert(insertarticle_contains_of_material1);
     
     //String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID2 + "')";
