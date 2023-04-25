@@ -29,7 +29,7 @@ private static InfDB idb;
     }
     
      private void ValjKund() {
-        String fraga = "SELECT Name FROM customer;";
+        String fraga = "SELECT CustomerID FROM customer;";
 
         ArrayList<String> kundRegister;
         try {
