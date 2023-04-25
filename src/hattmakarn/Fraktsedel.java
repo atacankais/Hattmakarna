@@ -89,13 +89,13 @@ private static InfDB idb;
             String Wcustomer = "SELECT Customer.Name FROM `Order` INNER JOIN Customer ON Order.CustomerID = Customer.CustomerID WHERE Order.OrderID = " + fraktID;
             String Rcustomer = idb.fetchSingle(Wcustomer);
             
-//            String customerAdress = "SELECT Customer.Adress FROM `customer` INNER JOIN Customer ON Order.CustomerID = Customer.CustomerID WHERE Order.OrderID = " + fraktID;
-//            String fetchedAdress = idb.fetchSingle(customerAdress);
-            CAROLINA Fortsätt här tisdag 25/4
+            String customerAdress = "SELECT Customer.Address FROM `customer` INNER JOIN `Order` ON Order.CustomerID = Customer.CustomerID WHERE Order.OrderID = " + fraktID;
+            String fetchedAdress = idb.fetchSingle(customerAdress);
+            //CAROLINA Fortsätt här tisdag 25/4
             
             
             //JOptionPane.showMessageDialog(null, Rcustomer + "!\nMottagare:\nOrder-ID: " + fraktID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
-            JOptionPane.showMessageDialog(null, Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro \n\nVarukod: \n\nVärde: \n\nMoms: 25% ");
+            JOptionPane.showMessageDialog(null, Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
         
         }
         
