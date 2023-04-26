@@ -31,6 +31,7 @@ private static InfDB idb;
     }
     
     private void fillBoxStatus(){
+        
         String fraga = "Select status from production";
         
         ArrayList<String> production;
@@ -61,6 +62,10 @@ private static InfDB idb;
         btnShowMaterial = new javax.swing.JButton();
         statusBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        meterTf = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +83,21 @@ private static InfDB idb;
             }
         });
 
+        statusBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusBoxActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Status");
+
+        jLabel3.setText("Material:");
+
+        jLabel4.setText("Meter:");
+
+        meterTf.setColumns(20);
+        meterTf.setRows(5);
+        jScrollPane2.setViewportView(meterTf);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,17 +107,29 @@ private static InfDB idb;
                 .addGap(175, 175, 175)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(40, 40, 40)
-                        .addComponent(statusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(btnShowMaterial))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(156, 156, 156)
+                                .addComponent(jLabel4)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 63, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(40, 40, 40)
+                                .addComponent(statusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90)
+                                .addComponent(btnShowMaterial)))
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,8 +141,14 @@ private static InfDB idb;
                     .addComponent(btnShowMaterial)
                     .addComponent(statusBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addGap(32, 32, 32))
         );
 
@@ -119,8 +156,9 @@ private static InfDB idb;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMaterialActionPerformed
-        materialTf.removeAll();
+        
         try{
+        materialTf.setText(null);
         String status = statusBox.getSelectedItem().toString();
         String showMaterialName = "select distinct Material_name from material, article_contains_of_material, article, production where material.MaterialID = article_contains_of_material.MaterialID and article_contains_of_material.ArticleID = Article.ArticleID and Article.ArticleID = production.ArticleID and status = '" + status + "';" ;
         ArrayList<String> material = idb.fetchColumn(showMaterialName);
@@ -131,11 +169,24 @@ private static InfDB idb;
             materialTf.append("\n");
         }
         
+        meterTf.setText(null);
+        String showMeter = "select distinct amount from material, article_contains_of_material, article, production where material.MaterialID = article_contains_of_material.MaterialID and article_contains_of_material.ArticleID = Article.ArticleID and Article.ArticleID = production.ArticleID and status = '" + status + "';" ;
+        ArrayList<String> article_contains_of_material = idb.fetchColumn(showMeter);
+        
+        for(String thisMeter : article_contains_of_material){
+            meterTf.append(thisMeter);
+            meterTf.append("\n");
+        }
+        
         }catch(InfException e){
             
         }
         
     }//GEN-LAST:event_btnShowMaterialActionPerformed
+
+    private void statusBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,8 +227,12 @@ private static InfDB idb;
     private javax.swing.JButton btnShowMaterial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea materialTf;
+    private javax.swing.JTextArea meterTf;
     private javax.swing.JComboBox<String> statusBox;
     // End of variables declaration//GEN-END:variables
 }
