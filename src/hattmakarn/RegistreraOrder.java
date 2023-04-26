@@ -774,15 +774,12 @@ private void fyllcbSpecialAnpassadDekoration1() {
     
      String lastAID = "select max(ArticleID) from article";
       String getLastAID = idb.fetchSingle(lastAID);
+      
     
-    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "'),(" + getLastAID + ",'" + getmaterialID2 + "'),(" + getLastAID + ",'" + getmaterialID3 + "')";
+    
+    String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + "," + getmaterialID1 + "," + 3.8 + "),(" + getLastAID + "," + getmaterialID2 + "," + 3.9 + "),(" + getLastAID + "," + getmaterialID3 + "," + 3.2 + ")";
     idb.insert(insertarticle_contains_of_material1);
-    
-    //String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID2 + "')";
-   // idb.insert(insertarticle_contains_of_material2);
-    
-    //String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID3 + "')";
-   // idb.insert(insertarticle_contains_of_material3);
+ 
    
     String insertOrder = "insert into `Order` (Datum, EmployeeID, CustomerID) values ('" + datumKundAnpassad + "'," + getCreatorID + "," + getCustID + ")";
     idb.insert(insertOrder);
@@ -798,7 +795,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
     idb.insert(insertProduction);
       
     
-    
+    JOptionPane.showMessageDialog(null, "Din order har skapats");
        
      } catch(InfException ex){
         System.out.println(ex.getMessage());}
@@ -829,6 +826,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
      String insertOrderArticle = "insert into order_contains_of_article values (" + getLastID + "," + getArtID + ")";
        
       idb.insert(insertOrderArticle);
+      JOptionPane.showMessageDialog(null, "Din order har skapats");
        }
         
         catch(InfException ex){
@@ -971,17 +969,10 @@ private void fyllcbSpecialAnpassadDekoration1() {
      String lastAID = "select max(ArticleID) from article";
       String getLastAID = idb.fetchSingle(lastAID);
       
-       String insertarticle_contains_of_material0 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getTygID + "')";
+       String insertarticle_contains_of_material0 = "insert into Article_contains_of_material values (" + getLastAID + "," + getTygID + "," + 3.8 + "),(" + getLastAID + "," + getmaterialID1 + "," + 3.8 + "),(" + getLastAID + "," + getmaterialID2 + "," + 3.9 + "),(" + getLastAID + "," + getmaterialID3 + "," + 3.2 + ")";
     idb.insert(insertarticle_contains_of_material0);
     
-   // String insertarticle_contains_of_material1 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID1 + "')";
-    //idb.insert(insertarticle_contains_of_material1);
-    
-    //String insertarticle_contains_of_material2 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID2 + "')";
-   // idb.insert(insertarticle_contains_of_material2);
-    
-    //String insertarticle_contains_of_material3 = "insert into Article_contains_of_material values (" + getLastAID + ",'" + getmaterialID3 + "')";
-   // idb.insert(insertarticle_contains_of_material3);
+
    
     String insertOrder = "insert into `Order` (Datum, EmployeeID, CustomerID) values ('" + datumSpecialAnpassad + "'," + getCreatorID + "," + getCustID + ")";
     idb.insert(insertOrder);
@@ -997,7 +988,7 @@ private void fyllcbSpecialAnpassadDekoration1() {
     idb.insert(insertProduction);
       
     
-    
+    JOptionPane.showMessageDialog(null, "Din order har skapats");
        
      } catch(InfException ex){
         System.out.println(ex.getMessage());}
