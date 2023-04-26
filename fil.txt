@@ -1,0 +1,1 @@
+Detta är text som skrivs till filen.
