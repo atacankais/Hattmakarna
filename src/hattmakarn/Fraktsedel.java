@@ -99,7 +99,7 @@ private static InfDB idb;
             //JOptionPane.showMessageDialog(null, Rcustomer + "!\nMottagare:\nOrder-ID: " + fraktID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
             JOptionPane.showMessageDialog(null, Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
            
-            FileWriter writer = new FileWriter("/Users/clarajonsson/NetBeansProjects/hattmakarna/fil.txt");
+            FileWriter writer = new FileWriter("/Users/clarajonsson/NetBeansProjects/hattmakarna/FraktsedelFil.txt");
             writer.write(Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
             writer.close();
             System.out.println("Filen har skapats.");

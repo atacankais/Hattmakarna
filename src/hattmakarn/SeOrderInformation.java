@@ -4,6 +4,8 @@
  */
 package hattmakarn;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -376,16 +378,16 @@ private static InfDB idb;
             
             String Wcustomer = "SELECT Customer.Name FROM `Order` INNER JOIN Customer ON Order.CustomerID = Customer.CustomerID WHERE Order.OrderID = " + mailID;
             String Rcustomer = idb.fetchSingle(Wcustomer);
-            
-            
-            
+  
             JOptionPane.showMessageDialog(null, "Hej " + Rcustomer + "!\nHär kommer ett kostnadsförslag på din order:\nOrder-ID: " + mailID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
-            
-        
+           
+            FileWriter writer = new FileWriter("/Users/clarajonsson/NetBeansProjects/hattmakarna/mailFil.txt");
+            writer.write("Hej " + Rcustomer + "!\nHär kommer ett kostnadsförslag på din order:\nOrder-ID: " + mailID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga hälsningar\nHattmakaren");
+            writer.close();
+            System.out.println("Filen har skapats.");
         }
         
-        
-        catch (InfException ex){}
+        catch (IOException | InfException ex){}
     }//GEN-LAST:event_BtnMailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
