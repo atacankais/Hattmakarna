@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -97,6 +99,8 @@ private static InfDB idb;
             //JOptionPane.showMessageDialog(null, Rcustomer + "!\nMottagare:\nOrder-ID: " + fraktID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
             JOptionPane.showMessageDialog(null, Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
         
+            
+            
         }
         
         
@@ -105,7 +109,8 @@ private static InfDB idb;
         }
     
     }//GEN-LAST:event_btnFraktActionPerformed
-
+ 
+    
     /**
      * @param args the command line arguments
      */
