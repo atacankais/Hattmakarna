@@ -45,6 +45,7 @@ private static InfDB idb;
         jScrollPane1 = new javax.swing.JScrollPane();
         artikelT = new javax.swing.JTable();
         sokKnapp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,27 +69,37 @@ private static InfDB idb;
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Sök lagda artiklar ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(sokKnapp)
-                .addGap(53, 53, 53))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(39, 39, 39)
                 .addComponent(sokKnapp)
-                .addGap(35, 35, 35))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -97,10 +108,19 @@ private static InfDB idb;
     private void sokKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokKnappActionPerformed
         
        try{
-            String lagd = "Select status from production where status = 'lagd'"; 
+            //String lagd = "Select status from production where status = 'lagd'"; 
             //String sqlFraga = "select material_name, amount from article, production, material, article_contains_of_material where status = '" + lagd + "'";
             //String sqlFraga = "select a.article_Name, acm.Amount from article a join article_contains_of_material acm on a.ArticleID = acm.ArticleID join production p on a.ArticleID = p.ArticleID where p.status = '"+ lagd + "'";
-            String sqlFraga = "select distinct Material_name from material, article_contains_of_material, article, production where material.MaterialID = article_contains_of_material.MaterialID and article_contains_of_material.ArticleID = Article.ArticleID and Article.ArticleID = production.ArticleID and status = '" + lagd + "';" ;
+            //String sqlFraga = "select distinct Material_name from material, article_contains_of_material, article, production where material.MaterialID = article_contains_of_material.MaterialID and article_contains_of_material.ArticleID = Article.ArticleID and Article.ArticleID = production.ArticleID and status = '" + lagd + "';" ;
+//            String sqlFraga = "SELECT m.Material_Name, acm.Amount \n" +
+//            "FROM article a \n" +
+//            "JOIN article_contains_of_material acm ON a.ArticleID = acm.ArticleID \n" +
+//            "Join material m ON m.MaterialID = acm.MaterialID \n" +
+//            "JOIN production p ON a.ArticleID = p.ArticleID \n" +
+//            "WHERE p.Status = 'Lagd';";
+            String sqlFraga = "select amount, material_Name FROM article a JOIN article_contains_of_material acm ON a.ArticleID = acm.ArticleID Join material m ON m.MaterialID = acm.MaterialID JOIN production p ON a.ArticleID = p.ArticleID WHERE p.Status = 'Lagd';"; 
+            
+            
             
             DefaultTableModel dTM = (DefaultTableModel) artikelT.getModel();
             dTM.setRowCount(0);
@@ -112,8 +132,8 @@ private static InfDB idb;
         //Loopa igenom datum.
         for(HashMap ettRegDatum : artikelT){
                 Vector nyLista = new Vector(); //Vi testade först med --> ArrayList nyLista = new ArrayList(); men gav felmedellande. Förslag gav = gör med vector istället. 
-                nyLista.add(ettRegDatum.get("Article_Name"));
-                nyLista.add(ettRegDatum.get("amount"));
+                nyLista.add(ettRegDatum.get("Material_name"));
+                nyLista.add(ettRegDatum.get("Amount"));
                 dTM.addRow(nyLista);
         }
         } catch (InfException undanTag){
@@ -165,6 +185,7 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable artikelT;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton sokKnapp;
     // End of variables declaration//GEN-END:variables
