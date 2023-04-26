@@ -56,6 +56,7 @@ public class PlaneringsYta extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,18 +113,22 @@ public class PlaneringsYta extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setText("Ändra Hattmakare");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -135,25 +140,30 @@ public class PlaneringsYta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(31, 31, 31)))
+                        .addContainerGap()
+                        .addComponent(jButton4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,12 +183,24 @@ public class PlaneringsYta extends javax.swing.JFrame {
 
         //Connector conn = new Connector();
         //mysql Query  to get all the requariment ( articleId,..etc)
-        String sql = "Select o.OrderID, a2.Article_Name, m2.Material_name, p.Status from `order` as o \n"
-                + "join `order_contains_of_article` as a1 on o.OrderId = a1.OrderId\n"
-                + "join `article` as a2 on a2.ArticleID = a1.ArticleID\n"
-                + "join article_contains_of_material as m  on m.ArticleID = a2.ArticleID\n"
-                + "join material m2 on m.MaterialID = m2.MaterialID\n"
-                + "join production p on p.ArticleID = a1.ArticleID\n";
+  
+           jTextArea1.setText(null);    
+              
+               
+            String sql = "SELECT o.OrderID, a.Article_Name, m.Material_name,p.ProductionID, p.Status, e.Name FROM `order` AS o\n"
+           + "JOIN `order_contains_of_article` AS a1 ON o.OrderId = a1.OrderId\n"
+           + "JOIN `article` AS a ON a.ArticleID = a1.ArticleID\n"
+           + "JOIN `article_contains_of_material` AS am ON am.ArticleID = a.ArticleID\n"
+           + "JOIN `material` AS m ON m.MaterialID = am.MaterialID\n"
+           + "LEFT JOIN `production` AS p ON p.ArticleID = a1.ArticleID AND p.orderID = o.OrderID\n"
+           + "LEFT JOIN `employee` AS e ON e.EmployeeID = p.EmployeeID\n"
+           + "ORDER BY o.OrderID\n";
+
+               
+              
+               
+               
+               
 
         //
         ArrayList<HashMap<String, String>> result = null;
@@ -190,9 +212,13 @@ public class PlaneringsYta extends javax.swing.JFrame {
             Logger.getLogger(PlaneringsYta.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String str = "OrderID\t\tArticleName\t\tMaterialName\t\tStatus\n\n";
+        //String str = "OrderID\t\tArticleName\t\tMaterialName\t\tStatus\n\n";
+        String str = "OrderID\t\tArticleName\t\tMaterialName\t\tProduktionsID\t\tStatus\t\tHattmakare\n\n";
         for (HashMap<String, String> map : result) {
-            str += map.get("OrderID") + "\t\t" + map.get("Article_Name") + "\t\t" + map.get("Material_name") + "\t\t" + map.get("Status") + "\n\n";
+            //str += map.get("OrderID") + "\t\t" + map.get("Article_Name") + "\t\t" + map.get("Material_name") + "\t\t" + map.get("Status") + "\n\n";
+         str += map.get("OrderID") + "\t\t" + map.get("Article_Name") + "\t\t" + map.get("Material_name") + "\t\t" + map.get("ProductionID") + "\t\t" + map.get("Status") + "\t\t" + map.get("Name") + "\n\n";
+        
+        
         }
         jTextArea1.setText(str);
 
@@ -219,6 +245,11 @@ public class PlaneringsYta extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         new RegistreraKund().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        new ÄndraHattmakare().setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +294,7 @@ public class PlaneringsYta extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
