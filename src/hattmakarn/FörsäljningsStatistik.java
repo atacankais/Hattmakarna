@@ -1,12 +1,19 @@
 package hattmakarn;
 
-
+import java.time.LocalDate;
 import hattmakarn.Connector;
 import hattmakarn.PlaneringsYta;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
@@ -19,12 +26,17 @@ import oru.inf.InfException;
  * @author theod
  */
 public class FörsäljningsStatistik extends javax.swing.JFrame {
+    private static InfDB idb;
 
     /**
      * Creates new form FörsäljningsStatistik
      */
     public FörsäljningsStatistik() {
         initComponents();
+        
+        try {
+           idb = new InfDB("hattdb", "3306", "hattdba", "hattkey");
+        } catch (InfException ex) {}
     }
 
     /**
@@ -36,6 +48,8 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         tfTelefon = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -45,9 +59,24 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         tfStartDatum = new javax.swing.JTextField();
         tfSlutDatum = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         buttonSokDatum = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TabellHattar = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        tfSummaPris = new javax.swing.JTextField();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,45 +95,95 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         taKundStatistik.setRows(5);
         jScrollPane1.setViewportView(taKundStatistik);
 
+        tfStartDatum.setText("ÅÅMMDD");
         tfStartDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfStartDatumActionPerformed(evt);
             }
         });
 
+        tfSlutDatum.setText("ÅÅMMDD");
+
         jLabel3.setText("Ange datumintervall");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
         buttonSokDatum.setText("Sök");
+        buttonSokDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSokDatumActionPerformed(evt);
+            }
+        });
+
+        TabellHattar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Namn", "Datum", "Pris"
+            }
+        ));
+        jScrollPane4.setViewportView(TabellHattar);
+
+        jButton1.setText("Summera");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tfSummaPris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSummaPrisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfStartDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)
-                        .addComponent(tfSlutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonSokDatum))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfSummaPris, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(28, 28, 28)
-                            .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(34, 34, 34)
-                            .addComponent(knappSök)))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(227, Short.MAX_VALUE))
+                            .addGap(20, 20, 20)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(tfStartDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfSlutDatum)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(buttonSokDatum))
+                                .addComponent(jScrollPane1)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(34, 34, 34)
+                                    .addComponent(knappSök))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,9 +204,13 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
                     .addComponent(tfStartDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfSlutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSokDatum))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfSummaPris, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,8 +249,110 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
 
     private void tfStartDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfStartDatumActionPerformed
         
-        tfStartDatum.setText("År-Månad-Dag");
+//        tfStartDatum.addFocusListener(new FocusListener() {
+//   public void focusGained(FocusEvent e) {
+//       if (tfStartDatum.getText().equals("ÅÅ-MM-DD")) {
+//           tfStartDatum.setText("");
+//       }
+//   }
+//   public void focusLost(FocusEvent e) {
+//       if (tfStartDatum.getText().isEmpty()) {
+//           tfStartDatum.setText("ÅÅ-MM-DD");
+//       }
+//   }
+//});
+
     }//GEN-LAST:event_tfStartDatumActionPerformed
+
+    private void buttonSokDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSokDatumActionPerformed
+//        Connector conn = new Connector();
+    
+
+        //Connector conn = new Connector();
+        //mysql Query  to get all the requariment ( articleId,..etc)
+//        String sql = "Select o.OrderID, a2.Article_Name, o.Datum from `order` as o \n"
+//                + "join `order_contains_of_article` as a1 on o.OrderId = a1.OrderId\n"
+//                + "join `article` as a2 on a2.ArticleID = a1.ArticleID\n";
+//        String datum = "Select Datum from Order";
+//        
+//        String svar = idb.fetchSingle(datum);
+//        int date = Integer.parseInt(svar);
+        
+//        String startDate = tfStartDatum.getText();
+//        String endDate = tfSlutDatum.getText();
+
+//                "SELECT o.OrderID, a2.Article_Name, o.Datum FROM `order` as o WHERE Datum BETWEEN '" + startDate + "' AND '" + endDate + "'\n"
+//                + "join `order_contains_of_article` as a1 on o.OrderId = a1.OrderId\n"
+//                + "join `article` as a2 on a2.ArticleID = a1.ArticleID\n";
+        
+//        ArrayList<HashMap<String, String>> result = null;
+//
+//       try {
+//        String query = "SELECT article.Article_Name, article.Price, hattdb.order.Datum FROM hattdb.order INNER JOIN order_contains_of_article ON order_contains_of_article.OrderID = hattdb.order.OrderID INNER JOIN article ON article.ArticleID = order_contains_of_article.ArticleID";
+//         idb.fetchColumn(query);
+//         
+//         taStatistik.setText(query);
+//            result = conn.idb.fetchRows(query);
+//        } catch (InfException ex) {
+//            Logger.getLogger(PlaneringsYta.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        String str = "OrderID\tArticleName\tDatum\n Price\n";
+//        for (HashMap<String, String> map : result) {
+//            str += map.get("OrderID") + "\t" + map.get("Article_Name") + "\t" + map.get("Datum") + "\n";
+//        }
+//        taStatistik.setText(str);
+
+//private boolean overlaps() {
+     //   return !this.end.isBefore(other.start) && !other.end.isBefore(this.start)
+     
+   try{
+
+            String startDatum = tfStartDatum.getText();
+            String slutDatum = tfSlutDatum.getText();
+
+            String sqlFraga = "select Article_Name, Datum, Price from `order`, article where Datum between '" + startDatum + "' and '" + slutDatum + "'";
+
+            DefaultTableModel dTM = (DefaultTableModel) TabellHattar.getModel();
+            dTM.setRowCount(0);
+
+            //Skapa hashmap för att hålla lista på Namn och Registreringsdatum.
+        ArrayList<HashMap<String, String>> TabellHattar; // först testa vi bara  HashMap<String, String>, men förslag gav oss istället Arraylist<HashMap<String, String>> som funka.
+        TabellHattar = idb.fetchRows(sqlFraga);
+
+        //Loopa igenom datum.
+        for(HashMap ettRegDatum : TabellHattar){
+                Vector nyLista = new Vector(); //Vi testade först med --> ArrayList nyLista = new ArrayList(); men gav felmedellande. Förslag gav = gör med vector istället. 
+                nyLista.add(ettRegDatum.get("Article_Name"));
+                nyLista.add(ettRegDatum.get("Datum"));
+                nyLista.add(ettRegDatum.get("Price"));
+                dTM.addRow(nyLista);
+        }
+        } catch (InfException undanTag){
+        JOptionPane.showMessageDialog(null,"Något fel uppstod");
+        System.out.println("Error: " + undanTag);
+        }
+    
+
+    }//GEN-LAST:event_buttonSokDatumActionPerformed
+
+    private void tfSummaPrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSummaPrisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSummaPrisActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String fraga = "select SUM(Price) from Article join `order`.OrderID";
+        
+            
+            int total = 0;
+     for (int i = 0; i < TabellHattar.getRowCount(); i++) {
+     total += Integer.parseInt(TabellHattar.getValueAt(i, 2).toString());
+  }
+     tfSummaPris.setText("Total: " + total);
+         
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,17 +390,21 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabellHattar;
     private javax.swing.JButton buttonSokDatum;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton knappSök;
     private javax.swing.JTextArea taKundStatistik;
     private javax.swing.JTextField tfSlutDatum;
     private javax.swing.JTextField tfStartDatum;
+    private javax.swing.JTextField tfSummaPris;
     private javax.swing.JTextField tfTelefon;
     // End of variables declaration//GEN-END:variables
 }
