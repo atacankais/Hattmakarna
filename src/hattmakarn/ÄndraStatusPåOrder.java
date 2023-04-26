@@ -285,6 +285,9 @@ public class ÄndraStatusPåOrder extends javax.swing.JFrame {
             String newStatus = CbStatus.getSelectedItem().toString();
             
             String fraga = "update production set status='" + newStatus + "'where ProductionID= '" + changeStatus+"'";
+            
+          
+            
             idb.update(fraga);
             JOptionPane.showMessageDialog(null, "Status är ändrat");
         
