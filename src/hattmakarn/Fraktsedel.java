@@ -41,6 +41,7 @@ private static InfDB idb;
         jLabel1 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         btnFrakt = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,13 @@ private static InfDB idb;
         btnFrakt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFraktActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -65,19 +73,22 @@ private static InfDB idb;
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFrakt))))
+                            .addComponent(btnFrakt)))
+                    .addComponent(jButton1))
                 .addContainerGap(295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnFrakt)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,7 +110,7 @@ private static InfDB idb;
             //JOptionPane.showMessageDialog(null, Rcustomer + "!\nMottagare:\nOrder-ID: " + fraktID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
             JOptionPane.showMessageDialog(null, Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
            
-            FileWriter writer = new FileWriter("/Users/clarajonsson/NetBeansProjects/hattmakarna/FraktsedelFil.txt");
+            FileWriter writer = new FileWriter("C:\\Users\\flind\\OneDrive\\Skrivbord\\ProjektetNB\\hattmakarna\\FraktsedelFil.txt");
             writer.write(Rcustomer + "\nAdress: " + fetchedAdress + "\n\nAvsändare:\nHattmakarna AB\nHattmakarens väg 7,\n702 55 Örebro");
             writer.close();
             System.out.println("Filen har skapats.");
@@ -108,6 +119,10 @@ private static InfDB idb;
             System.out.println("Ett fel uppstod: " + e.getMessage());
              }
     }//GEN-LAST:event_btnFraktActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
  
     
     /**
@@ -147,6 +162,7 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFrakt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables

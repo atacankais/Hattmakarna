@@ -67,6 +67,7 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         KnappSumAntal = new javax.swing.JButton();
         tfSummeraAntal = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,26 +119,34 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
 
         TabellHattar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Namn", "Datum", "Pris", "Typ"
+                "Namn", "OrderID", "Datum", "Pris", "Typ"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(TabellHattar);
 
         jButton1.setText("Summera pris");
@@ -159,6 +168,13 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         KnappSumAntal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KnappSumAntalActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Tillbaka");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -203,14 +219,18 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -233,7 +253,7 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(KnappSumAntal)
                     .addComponent(tfSummeraAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -281,7 +301,7 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
             String startDatum = tfStartDatum.getText();
             String slutDatum = tfSlutDatum.getText();
 
-            String sqlFraga = "select Article_Name, Datum, Price, Article_stocked from `order`, article where Datum between '" + startDatum + "' and '" + slutDatum + "'";
+            String sqlFraga = "select Article_Name, OrderID, datum, Price, Article_stocked from `order`, article where datum between '" + startDatum + "' and '" + slutDatum + "'";
 
             DefaultTableModel dTM = (DefaultTableModel) TabellHattar.getModel();
             dTM.setRowCount(0);
@@ -294,7 +314,8 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         for(HashMap ettRegDatum : TabellHattar){
                 Vector nyLista = new Vector(); //Vi testade först med --> ArrayList nyLista = new ArrayList(); men gav felmedellande. Förslag gav = gör med vector istället. 
                 nyLista.add(ettRegDatum.get("Article_Name"));
-                nyLista.add(ettRegDatum.get("Datum"));
+                nyLista.add(ettRegDatum.get("OrderID"));
+                nyLista.add(ettRegDatum.get("datum"));
                 nyLista.add(ettRegDatum.get("Price"));
                 nyLista.add(ettRegDatum.get("Article_stocked"));
                 dTM.addRow(nyLista);
@@ -317,7 +338,7 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
             
             int total = 0;
      for (int i = 0; i < TabellHattar.getRowCount(); i++) {
-     total += Integer.parseInt(TabellHattar.getValueAt(i, 2).toString());
+     total += Integer.parseInt(TabellHattar.getValueAt(i, 3).toString());
   }
      tfSummaPris.setText("Total: " + total);
          
@@ -330,6 +351,10 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
         int rowCount = TabellHattar.getRowCount();
         tfSummeraAntal.setText(Integer.toString(rowCount));
     }//GEN-LAST:event_KnappSumAntalActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,6 +396,7 @@ public class FörsäljningsStatistik extends javax.swing.JFrame {
     private javax.swing.JTable TabellHattar;
     private javax.swing.JButton buttonSokDatum;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
