@@ -4,6 +4,8 @@
  */
 package hattmakarn;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -68,6 +70,7 @@ private static InfDB idb;
         tfAdress = new javax.swing.JTextField();
         tfHuvudMatt = new javax.swing.JTextField();
         knappAndraUppgifter = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,15 +107,27 @@ private static InfDB idb;
             }
         });
 
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbValjKund, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbValjKund, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -159,6 +174,8 @@ private static InfDB idb;
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(7, 7, 7)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +201,7 @@ private static InfDB idb;
                     .addComponent(tfHuvudMatt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(knappAndraUppgifter)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,6 +214,9 @@ private static InfDB idb;
     private void knappAndraUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAndraUppgifterActionPerformed
    
         try{
+            
+            
+            
             String namn = tfNamn.getText();
         String telefon = tfTelefon.getText();
         String mail = tfMail.getText();
@@ -216,8 +236,47 @@ private static InfDB idb;
     }//GEN-LAST:event_knappAndraUppgifterActionPerformed
 
     private void cbValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbValjKundActionPerformed
-        // TODO add your handling code here:
+        cbValjKund.addItemListener(new ItemListener()
+          {
+               public void itemStateChanged(ItemEvent event)
+               {
+                    if (event.getStateChange() == ItemEvent.SELECTED)
+                    {
+                         try
+                         {
+                             String id = cbValjKund.getSelectedItem().toString();
+                             String getNamn = "select name from customer where customerID = "+id+"";
+                             String getPhone = "select phone from customer where customerID = "+id+"";
+                             String getAddress = "select address from customer where customerID = "+id+"";
+                             String getMail = "select mail from customer where customerID = "+id+"";
+                             String getHead = "select Head_measurement from customer where customerID = "+id+"";
+                             String answer1 = idb.fetchSingle(getNamn);
+                             String answer2 = idb.fetchSingle(getPhone);
+                             String answer3 = idb.fetchSingle(getAddress);
+                             String answer4 = idb.fetchSingle(getMail);
+                             String answer5 = idb.fetchSingle(getHead);
+                             
+                             
+                              tfNamn.setText(answer1);
+                              tfTelefon.setText(answer2);
+                              tfMail.setText(answer3);
+                              tfAdress.setText(answer4);
+                              tfHuvudMatt.setText(answer5);
+                              
+                         }
+                         catch (Exception ex)
+                         {
+                              ex.printStackTrace();
+                         }
+                    }
+               }
+        }
+        );
     }//GEN-LAST:event_cbValjKundActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +315,7 @@ private static InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbValjKund;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

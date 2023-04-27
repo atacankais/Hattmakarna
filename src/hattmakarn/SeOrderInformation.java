@@ -280,7 +280,11 @@ private static InfDB idb;
     private void ValjKundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValjKundActionPerformed
 
   try {
-
+        articleT.setText(null);
+        anställningT.setText(null);
+        materialT.setText(null);
+        statusT.setText(null);
+        ordernummerT.setText(null);
         String name = sokKundnamnTr.getText();
         String showArticle = "SELECT a.Article_Name, o.OrderID, e.EmployeeID, m.Material_name, pr.Status FROM Article a INNER JOIN Article_Contains_Of_Material ac ON a.ArticleID = ac.ArticleID INNER JOIN Material m ON ac.MaterialID = m.MaterialID INNER JOIN Production pr ON a.ArticleID = pr.ArticleID INNER JOIN `Order` o ON pr.OrderID = o.OrderID INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID INNER JOIN Customer c ON o.CustomerID = c.CustomerID where c.Name = '" + name + "'";
         ArrayList<String> articles = idb.fetchColumn(showArticle);
@@ -355,7 +359,8 @@ private static InfDB idb;
 
         idb.delete("delete from order_contains_of_article where OrderID = " + selectedID);
         idb.delete("delete from production where OrderID = " + selectedID);
-        idb.delete("delete from order where OrderID = " + selectedID);
+        idb.delete("delete from `Order` where OrderID = " + selectedID);
+        
 
 
 
@@ -381,7 +386,7 @@ private static InfDB idb;
   
             JOptionPane.showMessageDialog(null, "Hej " + Rcustomer + "!\nHär kommer ett kostnadsförslag på din order:\nOrder-ID: " + mailID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga häslningar\nHattmakaren");
            
-            FileWriter writer = new FileWriter("/Users/clarajonsson/NetBeansProjects/hattmakarna/mailFil.txt");
+            FileWriter writer = new FileWriter("C:\\Users\\flind\\OneDrive\\Skrivbord\\ProjektetNB\\hattmakarna\\mailFil.txt");
             writer.write("Hej " + Rcustomer + "!\nHär kommer ett kostnadsförslag på din order:\nOrder-ID: " + mailID + "\nPris: \nVänligen bekräfta denna order genom att svara på detta mail!\nMed vänliga hälsningar\nHattmakaren");
             writer.close();
             System.out.println("Filen har skapats.");
