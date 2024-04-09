@@ -1,7 +1,7 @@
 # Business System for Hat Manufacturer
 
 ## Getting Started
-Download the latest setup.exe from releases or clone the repo and run 'npm i && npm start'.
+Clone the repo and run it in NetBeans IDE.
 
 ## Built With
 * Java
